@@ -103,6 +103,44 @@ def reach(rep: Report, proxy: str | None) -> None:
         (rep.ok if r.status_code < 400 and not wall else rep.warn)(line)
 
 
+DISCOVER = (
+    ("tutu-route", "https://www.tutu.ru/poezda/Tuymazy/Moskva/"),
+    ("tutu-rasp", "https://www.tutu.ru/poezda/rasp_d.php?nnst1=2060500&nnst2=2000000&date=09.01.2027"),
+    ("tutu-main", "https://www.tutu.ru/poezda/"),
+    ("onetwotrip-main", "https://www.onetwotrip.com/ru/poezda/"),
+    ("onetwotrip-route", "https://www.onetwotrip.com/ru/poezda/tuymazy-moskva/"),
+)
+
+
+def discover(rep: Report, root: Path, proxy: str | None) -> None:
+    """Сохраняет страницы посредников в docs/data/discover/, чтобы по настоящим ответам написать разбор."""
+    import re
+
+    rep.head("Разведка: страницы Туту и OneTwoTrip")
+    proxies = {"https": proxy, "http": proxy} if proxy else None
+    out = root / "docs" / "data" / "discover"
+    for name, url in DISCOVER:
+        try:
+            r = call_with_deadline(lambda: requests.get(url, headers={**BROWSER_HEADERS, "Accept": "text/html,*/*"}, timeout=10, proxies=proxies), 15)
+        except Exception as exc:  # noqa: BLE001
+            rep.warn(f"{name}: {type(exc).__name__}")
+            continue
+        text = r.text
+        hints = {
+            "tuymazy": len(re.findall(r"Туймаз|Tuymaz", text)),
+            "301": len(re.findall(r"301\s?У", text)),
+            "json_scripts": len(re.findall(r"<script[^>]+(?:application/json|__NEXT_DATA__|ld\+json)", text)),
+            "api_urls": sorted(set(re.findall(r"https?://[\w.-]+/[\w/.-]*(?:api|search|rasp|schedule)[\w/.?=&%-]*", text)))[:15],
+        }
+        if os.environ.get("GITHUB_ACTIONS"):
+            out.mkdir(parents=True, exist_ok=True)
+            (out / f"{name}.html").write_text(text[:400000], encoding="utf-8")
+        (rep.ok if r.status_code < 400 else rep.warn)(f"{name}: HTTP {r.status_code}, {len(text)} знаков, итоговый адрес {r.url[:120]}")
+        rep.info(f"упоминаний Туймазы: {hints['tuymazy']}, «301У»: {hints['301']}, JSON-блоков: {hints['json_scripts']}")
+        for u in hints["api_urls"]:
+            rep.info(f"адрес: {u[:150]}")
+
+
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(prog="python -m dozor probe")
     parser.add_argument("--root", default=".")
@@ -203,6 +241,7 @@ def main(argv: list[str]) -> int:
                 rep.ok(f"{fmt_date(date)}: источник отвечает, но прямых билетов в кэше Aviasales сейчас нет")
 
     reach(rep, env.get("RZD_PROXY"))
+    discover(rep, root, env.get("RZD_PROXY"))
 
     print()
     if rep.failed:
