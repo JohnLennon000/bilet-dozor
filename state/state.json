@@ -1,5 +1,21 @@
 {
- "events": [],
+ "events": [
+  {
+   "body": "РЖД: Нет связи с источником (таймаут). Не получается уже 152 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1793704905,
+   "title": "⚠️ Не могу проверить билеты РЖД 09.01",
+   "urgent": false,
+   "watch": "train:2027-01-09"
+  }
+ ],
  "fingerprint": {
   "flight": [
    "UUA",
@@ -27,77 +43,81 @@
  "sources": {
   "rzd": {
    "last_error": {
-    "at": 1793695730,
+    "at": 1793704905,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (таймаут)"
    }
   },
   "travelpayouts": {
+   "excerpt": "{\"data\":[],\"currency\":\"rub\",\"success\":true}",
    "last_error": {
     "at": 1793695730,
     "excerpt": "",
     "kind": "config",
     "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
+   },
+   "last_ok": {
+    "at": 1793704905,
+    "ms": 100,
+    "status": 200
    }
   }
  },
  "station_cache": {},
  "watches": {
   "flight:2027-01-09": {
-   "good": null,
+   "good": {
+    "at": 1793704905,
+    "snapshot": {
+     "at": 1793704905,
+     "date": "2027-01-09",
+     "offers": [],
+     "type": "flight"
+    }
+   },
    "last": {
-    "at": 1793695730,
-    "error": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
-    "kind": "config",
-    "ok": false
+    "at": 1793704905,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "travelpayouts": {
-      "kind": "config",
-      "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
-      "notified_at": null,
-      "since": 1793695730
-     }
-    },
+    "health": {},
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793695730
+   "tried_at": 1793704905
   },
   "flight:2027-01-10": {
-   "good": null,
+   "good": {
+    "at": 1793704905,
+    "snapshot": {
+     "at": 1793704905,
+     "date": "2027-01-10",
+     "offers": [],
+     "type": "flight"
+    }
+   },
    "last": {
-    "at": 1793695730,
-    "error": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
-    "kind": "config",
-    "ok": false
+    "at": 1793704905,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "travelpayouts": {
-      "kind": "config",
-      "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
-      "notified_at": null,
-      "since": 1793695730
-     }
-    },
+    "health": {},
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793695730
+   "tried_at": 1793704905
   },
   "train:2027-01-09": {
    "good": null,
    "last": {
-    "at": 1793695730,
+    "at": 1793704905,
     "error": "Нет связи с источником (таймаут)",
     "kind": "network",
     "ok": false
@@ -110,7 +130,7 @@
      "rzd": {
       "kind": "network",
       "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
+      "notified_at": 1793704905,
       "since": 1793695730
      }
     },
