@@ -150,24 +150,21 @@ def discover(rep: Report, root: Path, proxy: str | None) -> None:
             chunks = sorted(set(chunks) | {f"{base}_next/{n}" for n in names})
         except Exception as exc:  # noqa: BLE001
             rep.info(f"манифест скриптов: {type(exc).__name__}")
-    hints, total = [], 0
-    pat = re.compile(r"searchDataHost|trainGatewayHost|train-gateway|searchId|/offers/|new WebSocket|\.subscribe\(|text/event-stream", re.I)
+    total, kept = 0, 0
+    pat = re.compile(r"searchDataHost|trainGatewayHost|train-gateway|new WebSocket|text/event-stream|socket\.io")
     for url in chunks[:90]:
         try:
             js = _fetch(url, proxy).text
         except Exception:  # noqa: BLE001
             continue
         total += len(js)
-        for m in pat.finditer(js):
-            a = max(0, m.start() - 700)
-            hints.append(f"### {url.rsplit('/', 1)[-1]} @{m.start()}\n{js[a:m.end() + 1000]}\n")
-            if len(hints) > 40:
-                break
-        if len(hints) > 40:
-            break
-    rep.info(f"скачано {total} знаков скриптов, фрагментов с признаками обмена: {len(hints)}")
-    if save and hints:
-        (out / "tutu-js-hints.txt").write_text("\n".join(hints)[:350000], encoding="utf-8")
+        if pat.search(js) and kept < 2_500_000:
+            kept += len(js)
+            if save:
+                (out / "js").mkdir(exist_ok=True)
+                (out / "js" / url.rsplit("/", 1)[-1]).write_text(js, encoding="utf-8")
+            rep.info(f"сохранён скрипт {url.rsplit('/', 1)[-1]} ({len(js)} знаков)")
+    rep.info(f"скачано {total} знаков скриптов, сохранено {kept}")
     # пробуем прямые обращения к offers-api
     for name, url in (("offers-api корень", TUTU_API + "/"), ("offers-api socket.io", TUTU_API + "/socket.io/?EIO=4&transport=polling")):
         try:
