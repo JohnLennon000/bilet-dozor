@@ -104,41 +104,66 @@ def reach(rep: Report, proxy: str | None) -> None:
 
 
 DISCOVER = (
-    ("tutu-route", "https://www.tutu.ru/poezda/Tuymazy/Moskva/"),
-    ("tutu-rasp", "https://www.tutu.ru/poezda/rasp_d.php?nnst1=2060500&nnst2=2000000&date=09.01.2027"),
-    ("tutu-main", "https://www.tutu.ru/poezda/"),
-    ("onetwotrip-main", "https://www.onetwotrip.com/ru/poezda/"),
-    ("onetwotrip-route", "https://www.onetwotrip.com/ru/poezda/tuymazy-moskva/"),
+    ("tutu-dated", "https://www.tutu.ru/poezda/Tuymazy/Moskva/?date=09.01.2027"),
 )
+TUTU_API = "https://offers-api.tutu.ru"
+
+
+def _fetch(url: str, proxy: str | None, **kw):
+    proxies = {"https": proxy, "http": proxy} if proxy else None
+    return call_with_deadline(lambda: requests.get(url, headers={**BROWSER_HEADERS, "Accept": "text/html,*/*"}, timeout=10, proxies=proxies, **kw), 15)
 
 
 def discover(rep: Report, root: Path, proxy: str | None) -> None:
-    """Сохраняет страницы посредников в docs/data/discover/, чтобы по настоящим ответам написать разбор."""
+    """Сохраняет в docs/data/discover/ страницу Туту на нужную дату и места в её скриптах, где описан обмен с offers-api."""
     import re
 
-    rep.head("Разведка: страницы Туту и OneTwoTrip")
-    proxies = {"https": proxy, "http": proxy} if proxy else None
+    rep.head("Разведка: Туту на дату 09.01.2027")
     out = root / "docs" / "data" / "discover"
+    save = bool(os.environ.get("GITHUB_ACTIONS"))
+    if save:
+        out.mkdir(parents=True, exist_ok=True)
+    page = ""
     for name, url in DISCOVER:
         try:
-            r = call_with_deadline(lambda: requests.get(url, headers={**BROWSER_HEADERS, "Accept": "text/html,*/*"}, timeout=10, proxies=proxies), 15)
+            r = _fetch(url, proxy)
         except Exception as exc:  # noqa: BLE001
             rep.warn(f"{name}: {type(exc).__name__}")
             continue
-        text = r.text
-        hints = {
-            "tuymazy": len(re.findall(r"Туймаз|Tuymaz", text)),
-            "301": len(re.findall(r"301\s?У", text)),
-            "json_scripts": len(re.findall(r"<script[^>]+(?:application/json|__NEXT_DATA__|ld\+json)", text)),
-            "api_urls": sorted(set(re.findall(r"https?://[\w.-]+/[\w/.-]*(?:api|search|rasp|schedule)[\w/.?=&%-]*", text)))[:15],
-        }
-        if os.environ.get("GITHUB_ACTIONS"):
-            out.mkdir(parents=True, exist_ok=True)
-            (out / f"{name}.html").write_text(text[:400000], encoding="utf-8")
-        (rep.ok if r.status_code < 400 else rep.warn)(f"{name}: HTTP {r.status_code}, {len(text)} знаков, итоговый адрес {r.url[:120]}")
-        rep.info(f"упоминаний Туймазы: {hints['tuymazy']}, «301У»: {hints['301']}, JSON-блоков: {hints['json_scripts']}")
-        for u in hints["api_urls"]:
-            rep.info(f"адрес: {u[:150]}")
+        page = r.text
+        if save:
+            (out / f"{name}.html").write_text(page[:500000], encoding="utf-8")
+        rep.ok(f"{name}: HTTP {r.status_code}, {len(page)} знаков, итоговый адрес {r.url[:140]}")
+        m = re.search(r'"incomingSearchParams":(\{.*?\}\]?[^{}]*?\}),"callCenterParams"', page, re.S)
+        rep.info(f"поиск на странице: {m.group(1)[:300] if m else 'не найден'}")
+    # скрипты приложения: ищем, как оно общается с offers-api
+    chunks = sorted(set(re.findall(r'https://cdn1\.tu-tu\.ru/offers/+_next/static/[\w/%.\[\]-]+\.js', page)))
+    rep.info(f"скриптов приложения: {len(chunks)}")
+    hints, total = [], 0
+    pat = re.compile(r"offers-api|websoket|WebSocket|EventSource|socket\.io|/api/v\d|railway", re.I)
+    for url in chunks[:70]:
+        try:
+            js = _fetch(url, proxy).text
+        except Exception:  # noqa: BLE001
+            continue
+        total += len(js)
+        for m in pat.finditer(js):
+            a = max(0, m.start() - 300)
+            hints.append(f"### {url.rsplit('/', 1)[-1]} @{m.start()}\n{js[a:m.end() + 500]}\n")
+            if len(hints) > 60:
+                break
+        if len(hints) > 60:
+            break
+    rep.info(f"скачано {total} знаков скриптов, фрагментов с признаками обмена: {len(hints)}")
+    if save and hints:
+        (out / "tutu-js-hints.txt").write_text("\n".join(hints)[:350000], encoding="utf-8")
+    # пробуем прямые обращения к offers-api
+    for name, url in (("offers-api корень", TUTU_API + "/"), ("offers-api socket.io", TUTU_API + "/socket.io/?EIO=4&transport=polling")):
+        try:
+            r = _fetch(url, proxy)
+            rep.info(f"{name}: HTTP {r.status_code}, {r.headers.get('content-type', '')[:40]}, начало: {r.text[:160]!r}")
+        except Exception as exc:  # noqa: BLE001
+            rep.info(f"{name}: {type(exc).__name__}")
 
 
 def main(argv: list[str]) -> int:
