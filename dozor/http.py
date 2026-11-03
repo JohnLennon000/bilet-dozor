@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+import threading
 import time
 
 import requests
@@ -15,6 +16,34 @@ BROWSER_HEADERS = {
 }
 
 
+class _Deadline(Exception):
+    pass
+
+
+def call_with_deadline(fn, seconds: float):
+    """Выполнить fn() не дольше seconds секунд по настенным часам.
+
+    Таймаут requests считается отдельно для каждого адреса сервера и для каждого чтения, поэтому при молчащем
+    сервере запрос может висеть минутами. Здесь жёсткий общий предел: зависший поток-демон просто бросаем.
+    """
+    box: dict = {}
+
+    def run() -> None:
+        try:
+            box["value"] = fn()
+        except BaseException as exc:  # noqa: BLE001 — пробрасываем в вызывающий поток
+            box["error"] = exc
+
+    th = threading.Thread(target=run, daemon=True)
+    th.start()
+    th.join(seconds)
+    if th.is_alive():
+        raise _Deadline()
+    if "error" in box:
+        raise box["error"]
+    return box.get("value")
+
+
 def snippet(text: str, n: int = 160) -> str:
     return re.sub(r"\s+", " ", str(text))[:n]
 
@@ -24,7 +53,7 @@ def get_json(
     *,
     params: dict | None = None,
     headers: dict | None = None,
-    timeout: float = 20,
+    timeout: float = 15,
     session: requests.Session | None = None,
     proxy: str | None = None,
     retries: int = 1,
@@ -35,14 +64,16 @@ def get_json(
     started = time.monotonic()
     resp = None
     for attempt in range(retries + 1):
+        t0 = time.monotonic()
         try:
-            resp = http.get(url, params=params, headers=headers, timeout=timeout, proxies=proxies)
+            resp = call_with_deadline(lambda: http.get(url, params=params, headers=headers, timeout=timeout, proxies=proxies), timeout + 5)
             break
-        except requests.RequestException as exc:
-            if attempt < retries:
-                time.sleep(3)
+        except (requests.RequestException, _Deadline) as exc:
+            slow = time.monotonic() - t0 > 8   # сервер молчит — повтор только затянет запуск
+            if attempt < retries and not slow:
+                time.sleep(2)
                 continue
-            why = "таймаут" if isinstance(exc, requests.Timeout) else type(exc).__name__
+            why = "таймаут" if isinstance(exc, (requests.Timeout, _Deadline)) else type(exc).__name__
             raise SourceError(f"Нет связи с источником ({why})", "network") from None
     assert resp is not None
     text = resp.text

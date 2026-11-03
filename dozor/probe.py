@@ -10,9 +10,13 @@ import argparse
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
+import requests
+
 from dozor.config import ConfigError, load_config
+from dozor.http import BROWSER_HEADERS, call_with_deadline
 from dozor.diff import train_matches
 from dozor.sources import rzd, travelpayouts
 from dozor.util import SourceError, clock, clock_msk, fmt_date, rub, seats_word, title_case
@@ -67,6 +71,36 @@ def save_raw(directory: Path | None, name: str, payload: object) -> None:
     directory.mkdir(parents=True, exist_ok=True)
     (directory / name).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"   сырой ответ сохранён: {directory / name}")
+
+
+REACH = (
+    ("РЖД, главная", "https://ticket.rzd.ru/"),
+    ("Туту", "https://www.tutu.ru/poezda/"),
+    ("Яндекс Путешествия", "https://travel.yandex.ru/trains/"),
+    ("Т-Банк Путешествия", "https://www.tbank.ru/travel/trains/"),
+    ("Озон Трэвел", "https://www.ozon.travel/"),
+    ("OneTwoTrip", "https://www.onetwotrip.com/ru/poezda/"),
+    ("Aviasales (для сравнения)", "https://www.aviasales.ru/"),
+)
+
+
+def reach(rep: Report, proxy: str | None) -> None:
+    """Достучаться до главных страниц: отвечает ли сайт серверу, пускает ли или показывает заглушку."""
+    rep.head("Доступность сайтов с этого адреса")
+    proxies = {"https": proxy, "http": proxy} if proxy else None
+    for name, url in REACH:
+        t0 = time.monotonic()
+        try:
+            r = call_with_deadline(lambda: requests.get(url, headers={**BROWSER_HEADERS, "Accept": "text/html,*/*"}, timeout=8, proxies=proxies), 12)
+        except Exception as exc:  # noqa: BLE001
+            kind = "нет ответа за 12 с" if type(exc).__name__ in ("_Deadline", "ReadTimeout", "ConnectTimeout") else type(exc).__name__
+            rep.warn(f"{name}: {kind}")
+            continue
+        ms = int((time.monotonic() - t0) * 1000)
+        low = r.text[:4000].lower()
+        wall = any(w in low for w in ("captcha", "qrator", "access denied", "cloudflare", "доступ ограничен", "robot"))
+        line = f"{name}: HTTP {r.status_code}, {len(r.content)} байт, {ms} мс{', похоже на защиту от ботов' if wall else ''}"
+        (rep.ok if r.status_code < 400 and not wall else rep.warn)(line)
 
 
 def main(argv: list[str]) -> int:
@@ -168,11 +202,17 @@ def main(argv: list[str]) -> int:
             else:
                 rep.ok(f"{fmt_date(date)}: источник отвечает, но прямых билетов в кэше Aviasales сейчас нет")
 
+    reach(rep, env.get("RZD_PROXY"))
+
     print()
     if rep.failed:
         print("Итог: есть проблемы — см. строки с ❌ выше.")
     else:
         print("Итог: источники отвечают, ответы разобраны.")
+    if os.environ.get("GITHUB_ACTIONS"):   # отчёт кладём в репозиторий: его видно без входа в журнал запуска
+        out = root / "docs" / "data" / "probe.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps({"at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "failed": rep.failed, "lines": rep.md}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary_path:
         with open(summary_path, "a", encoding="utf-8") as fh:
