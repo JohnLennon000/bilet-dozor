@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>Дозор билетов</title>
+  <meta name="description" content="Следит за билетами: поезд Туймазы — Москва (РЖД) и самолёт Бугульма — Москва. Присылает уведомления и показывает, как менялись цены.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121413" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Дозор">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <noscript><p class="wrap">Для работы «Дозора билетов» нужен включённый JavaScript.</p></noscript>
+  <div class="wrap">
+    <header class="top">
+      <h1>Дозор билетов</h1>
+      <p id="status" class="status">Загружаю…</p>
+    </header>
+    <div id="banners"></div>
+    <main id="watches" aria-live="polite"></main>
+    <section id="notify" class="panel" aria-label="Уведомления"></section>
+    <section id="events" class="panel" aria-label="Журнал событий"></section>
+    <section id="sources" class="panel" aria-label="Источники данных"></section>
+    <footer id="foot" class="foot"></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+name: Проверка билетов
+
+on:
+  schedule:
+    # Примерно каждые 10 минут. GitHub не гарантирует точность: в часы нагрузки запуск может задержаться.
+    - cron: "3-59/10 * * * *"
+  workflow_dispatch:
+    inputs:
+      probe:
+        description: "Сначала проверить источники (probe): отвечает ли РЖД, как разбирается ответ"
+        type: boolean
+        default: false
+      digest:
+        description: "Прислать сводку сейчас"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: [config.yaml, "push/**"]   # новые настройки или подключённый телефон — проверить сразу
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dozor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest   # если РЖД не отвечает с серверов GitHub — см. README, «РЖД не отвечает»
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Установить зависимости
+        run: pip install -r requirements.txt
+
+      - name: Проверка источников (probe)
+        if: ${{ inputs.probe }}
+        continue-on-error: true
+        env:
+          TRAVELPAYOUTS_TOKEN: ${{ secrets.TRAVELPAYOUTS_TOKEN }}
+          RZD_PROXY: ${{ secrets.RZD_PROXY }}
+        run: python -m dozor probe
+
+      - name: Проверить билеты
+        env:
+          TRAVELPAYOUTS_TOKEN: ${{ secrets.TRAVELPAYOUTS_TOKEN }}
+          PUSH_SECRET: ${{ secrets.PUSH_SECRET }}
+          RZD_PROXY: ${{ secrets.RZD_PROXY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m dozor ${{ inputs.digest && '--force-digest' || '' }} ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
+
+      - name: Сохранить данные
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for path in docs/data state push; do
+            if [ -e "$path" ]; then git add -A -- "$path"; fi
+          done
+          if git diff --cached --quiet; then
+            echo "Изменений нет"
+            exit 0
+          fi
+          git commit -q -m "Данные $(date -u +'%Y-%m-%d %H:%M') UTC"
+          for attempt in 1 2 3; do
+            if git push -q origin HEAD:main; then exit 0; fi
+            git fetch -q --depth=50 origin main
+            git rebase -q origin/main || { git rebase --abort; exit 1; }
+          done
+          exit 1

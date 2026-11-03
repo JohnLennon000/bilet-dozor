@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Дозор билетов",
+  "short_name": "Дозор",
+  "description": "Следит за билетами на поезд и самолёт, присылает уведомления и показывает динамику цен.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f1ec",
+  "theme_color": "#f3f1ec",
+  "categories": ["travel"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
