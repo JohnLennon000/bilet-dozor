@@ -139,20 +139,31 @@ def discover(rep: Report, root: Path, proxy: str | None) -> None:
     # скрипты приложения: ищем, как оно общается с offers-api
     chunks = sorted(set(re.findall(r'https://cdn1\.tu-tu\.ru/offers/+_next/static/[\w/%.\[\]-]+\.js', page)))
     rep.info(f"скриптов приложения: {len(chunks)}")
+    base = "https://cdn1.tu-tu.ru/offers/"
+    bid = re.search(r'"buildId":"([^"]+)"', page)
+    if bid:   # страницы и скрипты, которые приложение подгружает позже
+        try:
+            man = _fetch(f"{base}_next/static/{bid.group(1)}/_buildManifest.js", proxy).text
+            extra = re.search(r'"/unified\.train":\s*\[(.*?)\]', man, re.S)
+            names = re.findall(r'"([^"]+\.js)"', extra.group(1)) if extra else []
+            rep.info(f"из манифеста для /unified.train: {len(names)} скриптов")
+            chunks = sorted(set(chunks) | {f"{base}_next/{n}" for n in names})
+        except Exception as exc:  # noqa: BLE001
+            rep.info(f"манифест скриптов: {type(exc).__name__}")
     hints, total = [], 0
-    pat = re.compile(r"offers-api|websoket|WebSocket|EventSource|socket\.io|/api/v\d|railway", re.I)
-    for url in chunks[:70]:
+    pat = re.compile(r"searchDataHost|trainGatewayHost|train-gateway|searchId|/offers/|new WebSocket|\.subscribe\(|text/event-stream", re.I)
+    for url in chunks[:90]:
         try:
             js = _fetch(url, proxy).text
         except Exception:  # noqa: BLE001
             continue
         total += len(js)
         for m in pat.finditer(js):
-            a = max(0, m.start() - 300)
-            hints.append(f"### {url.rsplit('/', 1)[-1]} @{m.start()}\n{js[a:m.end() + 500]}\n")
-            if len(hints) > 60:
+            a = max(0, m.start() - 700)
+            hints.append(f"### {url.rsplit('/', 1)[-1]} @{m.start()}\n{js[a:m.end() + 1000]}\n")
+            if len(hints) > 40:
                 break
-        if len(hints) > 60:
+        if len(hints) > 40:
             break
     rep.info(f"скачано {total} знаков скриптов, фрагментов с признаками обмена: {len(hints)}")
     if save and hints:
