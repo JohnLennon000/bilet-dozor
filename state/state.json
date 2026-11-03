@@ -1,0 +1,122 @@
+{
+ "events": [],
+ "fingerprint": {
+  "flight": [
+   "UUA",
+   "MOW",
+   true,
+   "rub",
+   [
+    "travelpayouts"
+   ]
+  ],
+  "train": [
+   "Туймазы",
+   "Москва",
+   "",
+   "",
+   [],
+   [
+    "rzd"
+   ]
+  ]
+ },
+ "push": {
+  "known": []
+ },
+ "sources": {
+  "rzd": {
+   "last_error": {
+    "at": 1793695730,
+    "excerpt": "",
+    "kind": "network",
+    "message": "Нет связи с источником (таймаут)"
+   }
+  },
+  "travelpayouts": {
+   "last_error": {
+    "at": 1793695730,
+    "excerpt": "",
+    "kind": "config",
+    "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
+   }
+  }
+ },
+ "station_cache": {},
+ "watches": {
+  "flight:2027-01-09": {
+   "good": null,
+   "last": {
+    "at": 1793695730,
+    "error": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
+    "kind": "config",
+    "ok": false
+   },
+   "meta": {
+    "available_since": null,
+    "baselines": {},
+    "first_available_at": null,
+    "health": {
+     "travelpayouts": {
+      "kind": "config",
+      "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
+      "notified_at": null,
+      "since": 1793695730
+     }
+    },
+    "known": [],
+    "offers_seen": {}
+   },
+   "tried_at": 1793695730
+  },
+  "flight:2027-01-10": {
+   "good": null,
+   "last": {
+    "at": 1793695730,
+    "error": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
+    "kind": "config",
+    "ok": false
+   },
+   "meta": {
+    "available_since": null,
+    "baselines": {},
+    "first_available_at": null,
+    "health": {
+     "travelpayouts": {
+      "kind": "config",
+      "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)",
+      "notified_at": null,
+      "since": 1793695730
+     }
+    },
+    "known": [],
+    "offers_seen": {}
+   },
+   "tried_at": 1793695730
+  },
+  "train:2027-01-09": {
+   "good": null,
+   "last": {
+    "at": 1793695730,
+    "error": "Нет связи с источником (таймаут)",
+    "kind": "network",
+    "ok": false
+   },
+   "meta": {
+    "available_since": null,
+    "baselines": {},
+    "first_available_at": null,
+    "health": {
+     "rzd": {
+      "kind": "network",
+      "message": "Нет связи с источником (таймаут)",
+      "notified_at": null,
+      "since": 1793695730
+     }
+    },
+    "known": [],
+    "offers_seen": {}
+   }
+  }
+ }
+}
