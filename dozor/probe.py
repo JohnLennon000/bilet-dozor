@@ -158,7 +158,7 @@ def discover(rep: Report, root: Path, proxy: str | None) -> None:
         except Exception:  # noqa: BLE001
             continue
         total += len(js)
-        if pat.search(js) and kept < 2_500_000:
+        if kept < 4_500_000:
             kept += len(js)
             if save:
                 (out / "js").mkdir(exist_ok=True)
