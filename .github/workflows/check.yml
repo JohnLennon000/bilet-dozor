@@ -14,6 +14,10 @@ on:
         description: "Прислать сводку сейчас"
         type: boolean
         default: false
+      cron:
+        description: "Плановый запуск внешнего будильника (cron-job.org): обычная проверка, без --force"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: [config.yaml, "push/**"]   # новые настройки или подключённый телефон — проверить сразу
@@ -92,7 +96,7 @@ jobs:
           RZD_PROXY: ${{ secrets.RZD_PROXY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python -m dozor ${{ inputs.digest && '--force-digest' || '' }} ${{ github.event_name == 'workflow_dispatch' && '--force' || '' }}
+        run: python -m dozor ${{ inputs.digest && '--force-digest' || '' }} ${{ github.event_name == 'workflow_dispatch' && !inputs.cron && '--force' || '' }}
 
       - name: Сохранить данные
         if: always()
