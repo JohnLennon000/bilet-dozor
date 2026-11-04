@@ -29,6 +29,9 @@ jobs:
   check:
     runs-on: ubuntu-latest   # если РЖД не отвечает с серверов GitHub — см. README, «РЖД не отвечает»
     timeout-minutes: 10
+    env:
+      # Если задан секрет TS_AUTHKEY, запросы идут через телефон в России (Tailscale, «выходной узел»).
+      TS_AUTHKEY: ${{ secrets.TS_AUTHKEY }}
     steps:
       - uses: actions/checkout@v5
 
@@ -39,6 +42,29 @@ jobs:
 
       - name: Установить зависимости
         run: pip install -r requirements.txt
+
+      - name: Подключиться к телефону (Tailscale)
+        if: env.TS_AUTHKEY != ''
+        continue-on-error: true
+        uses: tailscale/github-action@v3
+        with:
+          authkey: ${{ secrets.TS_AUTHKEY }}
+          hostname: dozor-github
+
+      - name: Пустить интернет через телефон
+        if: env.TS_AUTHKEY != ''
+        continue-on-error: true
+        run: |
+          # Ищем устройство, разрешённое как выходной узел и сейчас в сети (телефон). Нет такого — работаем напрямую.
+          node=$(tailscale status --json | python3 -c 'import json,sys
+          d=json.load(sys.stdin)
+          print(next((p["TailscaleIPs"][0] for p in (d.get("Peer") or {}).values() if p.get("ExitNodeOption") and p.get("Online")), ""))')
+          if [ -z "$node" ]; then
+            echo "::warning::Телефон не в сети или не разрешён как выходной узел — проверка идёт напрямую, РЖД может не ответить"
+            exit 0
+          fi
+          sudo tailscale set --exit-node="$node"
+          echo "Страна выхода: $(curl -s -m 15 https://ipinfo.io/country || echo '?')"
 
       - name: Проверка источников (probe)
         if: ${{ inputs.probe }}
@@ -60,6 +86,7 @@ jobs:
       - name: Сохранить данные
         if: always()
         run: |
+          if [ -n "$TS_AUTHKEY" ]; then sudo tailscale set --exit-node= 2>/dev/null || true; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           for path in docs/data state push; do
