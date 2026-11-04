@@ -43,10 +43,10 @@
  "sources": {
   "rzd": {
    "last_error": {
-    "at": 1793743228,
+    "at": 1793755623,
     "excerpt": "",
     "kind": "network",
-    "message": "Нет связи с источником (таймаут)"
+    "message": "Нет связи с источником (SSLError)"
    }
   },
   "travelpayouts": {
@@ -58,8 +58,8 @@
     "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
    },
    "last_ok": {
-    "at": 1793743228,
-    "ms": 60,
+    "at": 1793755623,
+    "ms": 944,
     "status": 200
    }
   }
@@ -68,7 +68,7 @@
  "watches": {
   "flight:2027-01-09": {
    "good": {
-    "at": 1793743228,
+    "at": 1793755623,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -77,7 +77,7 @@
     }
    },
    "last": {
-    "at": 1793743228,
+    "at": 1793755623,
     "ok": true
    },
    "meta": {
@@ -88,11 +88,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793743228
+   "tried_at": 1793755623
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1793743228,
+    "at": 1793755623,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -101,7 +101,7 @@
     }
    },
    "last": {
-    "at": 1793743228,
+    "at": 1793755623,
     "ok": true
    },
    "meta": {
@@ -112,13 +112,13 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793743228
+   "tried_at": 1793755623
   },
   "train:2027-01-09": {
    "good": null,
    "last": {
-    "at": 1793743228,
-    "error": "Нет связи с источником (таймаут)",
+    "at": 1793755623,
+    "error": "Нет связи с источником (SSLError)",
     "kind": "network",
     "ok": false
    },
@@ -129,7 +129,7 @@
     "health": {
      "rzd": {
       "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
+      "message": "Нет связи с источником (SSLError)",
       "notified_at": 1793704905,
       "since": 1793695730
      }
