@@ -43,6 +43,14 @@ jobs:
       - name: Установить зависимости
         run: pip install -r requirements.txt
 
+      - name: Доверять УЦ Минцифры (сертификат rzd.ru)
+        run: |
+          # Обычные центры (certifi) + корневой сертификат Минцифры: им подписан сертификат ticket.rzd.ru.
+          bundle="$RUNNER_TEMP/ca-bundle.pem"
+          cat "$(python -c 'import certifi; print(certifi.where())')" certs/russian_trusted_root_ca.pem > "$bundle"
+          echo "REQUESTS_CA_BUNDLE=$bundle" >> "$GITHUB_ENV"
+          echo "Сертификатов в наборе: $(grep -c 'BEGIN CERTIFICATE' "$bundle")"
+
       - name: Подключиться к телефону (Tailscale)
         if: env.TS_AUTHKEY != ''
         continue-on-error: true
