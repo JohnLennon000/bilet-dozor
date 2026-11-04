@@ -65,8 +65,8 @@
     "message": "Нет связи с источником (SSLError)"
    },
    "last_ok": {
-    "at": 1793756197,
-    "ms": 1299,
+    "at": 1793758138,
+    "ms": 1298,
     "status": 200
    }
   },
@@ -79,8 +79,8 @@
     "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
    },
    "last_ok": {
-    "at": 1793755623,
-    "ms": 944,
+    "at": 1793758138,
+    "ms": 1380,
     "status": 200
    }
   }
@@ -102,7 +102,7 @@
  "watches": {
   "flight:2027-01-09": {
    "good": {
-    "at": 1793755623,
+    "at": 1793758138,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -111,7 +111,7 @@
     }
    },
    "last": {
-    "at": 1793755623,
+    "at": 1793758138,
     "ok": true
    },
    "meta": {
@@ -122,11 +122,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793756197
+   "tried_at": 1793758138
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1793755623,
+    "at": 1793758138,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -135,7 +135,7 @@
     }
    },
    "last": {
-    "at": 1793755623,
+    "at": 1793758138,
     "ok": true
    },
    "meta": {
@@ -146,16 +146,16 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793756197
+   "tried_at": 1793758138
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1793756197,
+    "at": 1793758138,
     "snapshot": {
      "all_numbers": [
       "301У"
      ],
-     "at": 1793756197,
+     "at": 1793758138,
      "date": "2027-01-09",
      "partial": false,
      "route": {
@@ -164,14 +164,14 @@
        "code": "2024750",
        "kind": "station",
        "name": "Туймазы",
-       "source": "suggest"
+       "source": "cache"
       },
       "to": {
        "at": 1793756197,
        "code": "2000000",
        "kind": "city",
        "name": "Москва",
-       "source": "suggest"
+       "source": "cache"
       }
      },
      "trains": [
@@ -193,7 +193,7 @@
     }
    },
    "last": {
-    "at": 1793756197,
+    "at": 1793758138,
     "ok": true
    },
    "meta": {
