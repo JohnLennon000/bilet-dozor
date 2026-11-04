@@ -53,7 +53,7 @@ def fixture_fetchers(directory: Path) -> dict:
         path = directory / f"rzd-{date}.json"
         payload = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"Trains": []}
         parsed = rzd.parse_train_pricing(payload)
-        route = {"from": {"code": cfg.train.from_code or "2060500", "name": cfg.train.from_name}, "to": {"code": cfg.train.to_code or rzd.MOSCOW_CITY_CODE, "name": cfg.train.to_name}}
+        route = {"from": {"code": cfg.train.from_code or "2024750", "name": cfg.train.from_name}, "to": {"code": cfg.train.to_code or rzd.MOSCOW_CITY_CODE, "name": cfg.train.to_name}}
         return {"trains": parsed["trains"], "partial": parsed["partial"], "route": route, "meta": {"status": 200, "ms": 0}, "excerpt": ""}
 
     def tp_fetch(cfg, date, ctx):

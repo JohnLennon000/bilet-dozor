@@ -58,3 +58,14 @@ def test_quiet_hours_wrap_midnight():
 def test_only_one_primary_link_survives():
     cfg = parse_config({"train": {"links": [{"label": "a", "url": "https://a.b", "primary": True}, {"label": "b", "url": "https://c.d", "primary": True}]}})
     assert [l["primary"] for l in cfg.train.links] == [True, False]
+
+
+def test_extra_trains_parsed_and_validated():
+    from dozor.config import ConfigError, parse_config
+    cfg = parse_config({"extra_trains": [{"from": "Москва", "to": "Уруссу", "dates": ["2026-12-25"], "label": "эксперимент"}]})
+    [(p1, main), (p2, extra)] = cfg.train_routes()
+    assert (p1, p2) == ("train", "train2") and main.from_name == "Туймазы"
+    assert (extra.from_name, extra.to_name, extra.dates, extra.label) == ("Москва", "Уруссу", ["2026-12-25"], "эксперимент")
+    for bad in ([{"from": "Москва", "to": "Уруссу"}], [{"from": "Москва", "to": "Уруссу", "dates": ["2026-12-25"], "foo": 1}], "Уруссу"):
+        with pytest.raises(ConfigError):
+            parse_config({"extra_trains": bad})

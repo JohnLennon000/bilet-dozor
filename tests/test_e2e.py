@@ -52,7 +52,7 @@ def test_full_story_sold_out_to_tickets_to_price_change(project):
     assert "301У" in p["title"] and "Купе — 3 места" in p["body"]
     assert p["url"] == "./#w=train:2027-01-09"
     assert [l["label"] for l in p["links"]] == ["Купить на РЖД", "Яндекс Путешествия"]
-    assert p["links"][0]["url"] == "https://ticket.rzd.ru/searchresults/v/1/2060500/2000000/2027-01-09"
+    assert p["links"][0]["url"] == "https://ticket.rzd.ru/searchresults/v/1/2024750/2000000/2027-01-09"
     assert h["Urgency"] == "high" and h["Content-Encoding"] == "aes128gcm" and h["Authorization"].startswith("vapid t=")
 
     write_fixture(fx, "rzd-2027-01-09.json", rzd_response([train("301У", [group("Compartment", 3, 4500), group("ReservedSeat", 9, 2300)])]))

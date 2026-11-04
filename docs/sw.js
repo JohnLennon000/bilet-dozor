@@ -1,7 +1,7 @@
 /* Service worker: приложение открывается без сети и показывает пуш-уведомления. Классический скрипт, не модуль. */
 "use strict";
 
-const CACHE = "bilet-dozor-v1";
+const CACHE = "bilet-dozor-v2";
 const SHELL = [
   "./",
   "index.html",

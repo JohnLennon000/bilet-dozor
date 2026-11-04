@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import copy
+import dataclasses
 import json
 import logging
 from dataclasses import dataclass
@@ -33,6 +34,10 @@ class Watch:
     key: str
     type: str   # "train" | "flight"
     date: str
+
+    @property
+    def prefix(self) -> str:   # «train», «train2»… или «flight»
+        return self.key.split(":", 1)[0]
 
 
 def new_meta() -> dict:
@@ -66,8 +71,9 @@ class Monitor:
     def defs(self) -> list[Watch]:
         today = today_msk(self.now)
         out = []
-        if self.cfg.train.enabled:
-            out += [Watch(f"train:{d}", "train", d) for d in self.cfg.train.dates if d >= today]
+        for prefix, route in self.cfg.train_routes():
+            if route.enabled:
+                out += [Watch(f"{prefix}:{d}", "train", d) for d in route.dates if d >= today]
         if self.cfg.flights.enabled:
             out += [Watch(f"flight:{d}", "flight", d) for d in self.cfg.flights.dates if d >= today]
         return out
@@ -82,8 +88,16 @@ class Monitor:
         for key in [k for k in self.state["watches"] if k not in keys]:
             del self.state["watches"][key]
 
+    def route(self, prefix: str):
+        """Настройки маршрута поезда по префиксу ключа («train», «train2»…)."""
+        return dict(self.cfg.train_routes()).get(prefix, self.cfg.train)
+
     def sources_for(self, w: Watch) -> list[str]:
-        return self.cfg.train.sources if w.type == "train" else self.cfg.flights.sources
+        return self.route(w.prefix).sources if w.type == "train" else self.cfg.flights.sources
+
+    def route_name(self, w: Watch) -> str:
+        r = self.route(w.prefix)
+        return f"{title_case(r.from_name)} → {title_case(r.to_name)}"
 
     # ───────────────────────── один запуск ─────────────────────────
 
@@ -100,16 +114,15 @@ class Monitor:
         return self.events
 
     def _fingerprint(self) -> dict:
-        t, f = self.cfg.train, self.cfg.flights
-        return {
-            "train": [t.from_name, t.to_name, t.from_code, t.to_code, sorted(t.trains), sorted(t.sources)],
-            "flight": [f.origin, f.destination, f.direct_only, f.currency, sorted(f.sources)],
-        }
+        f = self.cfg.flights
+        out = {prefix: [t.from_name, t.to_name, t.from_code, t.to_code, sorted(t.trains), sorted(t.sources)] for prefix, t in self.cfg.train_routes()}
+        out["flight"] = [f.origin, f.destination, f.direct_only, f.currency, sorted(f.sources)]
+        return out
 
     def _reset_if_settings_changed(self) -> None:
         """Сменили маршрут или фильтр — старые снимки и «сообщённые цены» больше не годятся."""
         fp, old = self._fingerprint(), self.state.get("fingerprint") or {}
-        for kind in ("train", "flight"):
+        for kind in fp:
             if kind in old and old[kind] != fp[kind]:
                 for key in [k for k in self.state["watches"] if k.startswith(f"{kind}:")]:
                     self.state["watches"][key] = {"good": None, "last": None, "meta": new_meta()}
@@ -137,7 +150,8 @@ class Monitor:
         if problem:
             raise SourceError(problem, "config")
         fetch = self.fetchers.get((w.type, name), module.fetch)
-        return fetch(self.cfg, w.date, {"env": self.env, "state": self.state, "now": self.now, "session": self.session})
+        cfg = dataclasses.replace(self.cfg, train=self.route(w.prefix)) if w.type == "train" else self.cfg   # источник поезда читает cfg.train
+        return fetch(cfg, w.date, {"env": self.env, "state": self.state, "now": self.now, "session": self.session})
 
     def _gather(self, w: Watch) -> tuple[dict, dict]:
         results, errors = {}, {}
@@ -190,7 +204,7 @@ class Monitor:
             return {
                 "type": "train", "date": w.date, "at": self.now, "partial": partial, "route": route,
                 "all_numbers": [t["number"] for t in trains],
-                "trains": [t for t in trains if train_matches(self.cfg.train.trains, t["number"])],
+                "trains": [t for t in trains if train_matches(self.route(w.prefix).trains, t["number"])],
             }
         # рейсы: предложение «липнет» на 6 часов — кэш Aviasales мигает, и ложные «появились/пропали» ни к чему
         seen_offers = ws["meta"]["offers_seen"]
@@ -249,7 +263,7 @@ class Monitor:
         self._append_history(w, snapshot)
 
         names = (
-            {"from": title_case(self.cfg.train.from_name), "to": title_case(self.cfg.train.to_name)}
+            {"from": title_case(self.route(w.prefix).from_name), "to": title_case(self.route(w.prefix).to_name)}
             if w.type == "train"
             else {"origin": iata_name(self.cfg.flights.origin), "destination": iata_name(self.cfg.flights.destination)}
         )
@@ -278,6 +292,10 @@ class Monitor:
             ws["last"] = {"ok": True, "at": self.now}
 
     def _event(self, ev: dict) -> None:
+        prefix = ev["watch"].split(":", 1)[0]
+        if prefix.startswith("train") and prefix != "train":   # дополнительный маршрут: в заголовке видно, какой
+            r = self.route(prefix)
+            ev["title"] += f" · {title_case(r.from_name)} → {title_case(r.to_name)}"
         log.info("[событие] %s %s: %s", ev["kind"], ev["watch"], ev["title"])
         self.events.append(ev)
 
@@ -296,7 +314,7 @@ class Monitor:
 
         if w.type == "train":
             for t in snapshot["trains"]:
-                push(f"train|{w.date}|{t['number']}", t.get("display_number") or t["number"],
+                push(f"{w.prefix}|{w.date}|{t['number']}", t.get("display_number") or t["number"],
                      {"t": self.now, "s": t["seats"], "p": t["min_price"], "g": {g["label"]: [g["seats"], g["min_price"]] for g in t["groups"]}},
                      lambda a, b: a["s"] == b["s"] and a["p"] == b["p"] and a["g"] == b["g"])
         else:
@@ -307,7 +325,7 @@ class Monitor:
                  lambda a, b: a["c"] == b["c"] and a["p"] == b["p"] and a["f"] == b["f"])
 
     def _group_stats(self, w: Watch, number: str, label: str) -> dict | None:
-        ser = self.history["series"].get(f"train|{w.date}|{number}")
+        ser = self.history["series"].get(f"{w.prefix}|{w.date}|{number}")
         prices = [pt["g"][label][1] for pt in (ser["points"] if ser else []) if label in pt.get("g", {}) and pt["g"][label][1] is not None]
         return {"min": min(prices), "max": max(prices)} if prices else None
 
@@ -336,10 +354,10 @@ class Monitor:
     # ───────────────────────── ссылки, сводка, модель для приложения ─────────────────────────
 
     def links(self, key: str) -> list[dict]:
-        typ, date = key.split(":", 1)
-        if typ == "train":
+        prefix, date = key.split(":", 1)
+        if prefix.startswith("train"):
             route = ((self.state["watches"].get(key) or {}).get("good") or {}).get("snapshot", {}).get("route")
-            return train_links(self.cfg, route, date)
+            return train_links(dataclasses.replace(self.cfg, train=self.route(prefix)), route, date)
         return flight_links(self.cfg, date)
 
     def summary_of(self, w: Watch) -> dict:
@@ -362,11 +380,12 @@ class Monitor:
             trains = snap["trains"] if snap else []
             total = sum(t["seats"] for t in trains)
             prices = [t["min_price"] for t in trains if t["min_price"] is not None]
+            r = self.route(w.prefix)
             base.update({
-                "title": "Поезд", "subtitle": f"{title_case(c.train.from_name)} → {title_case(c.train.to_name)}, прямой",
+                "title": "Поезд", "subtitle": f"{self.route_name(w)}, прямой", "label": r.label,
                 "trains": trains, "seats_total": total, "available": total > 0, "min_price": min(prices) if prices else None,
                 "partial": bool(snap and snap.get("partial")), "all_numbers": snap.get("all_numbers", []) if snap else [],
-                "watched_trains": c.train.trains,
+                "watched_trains": r.trains,
             })
         else:
             offers = snap["offers"] if snap else []
@@ -384,6 +403,8 @@ class Monitor:
     def digest_line(self, s: dict) -> str:
         icon = "🚆" if s["type"] == "train" else "✈️"
         head = f"{icon} {fmt_short_date(s['date'])}"
+        if s["type"] == "train" and s["key"].split(":", 1)[0] != "train":   # дополнительный маршрут — с названием
+            head += f" {s['subtitle'].removesuffix(', прямой')}"
         if s["status"] == "config":
             return f"{head}: {s['error']}"
         if s["status"] == "pending":
@@ -423,7 +444,7 @@ class Monitor:
             s = self.state["sources"].get(name, {})
             out[name] = {
                 "title": mod.TITLE, "kind": mod.KIND, "configured": mod.check_env(self.env) is None,
-                "enabled": name in (self.cfg.train.sources if mod.KIND == "train" else self.cfg.flights.sources),
+                "enabled": any(name in (t.sources if mod.KIND == "train" else self.cfg.flights.sources) for _, t in self.cfg.train_routes()),
                 "last_ok": copy.deepcopy(s.get("last_ok")), "last_error": copy.deepcopy(s.get("last_error")),
                 "excerpt": s.get("excerpt"),
             }

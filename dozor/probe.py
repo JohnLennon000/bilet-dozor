@@ -174,6 +174,66 @@ def discover(rep: Report, root: Path, proxy: str | None) -> None:
             rep.info(f"{name}: {type(exc).__name__}")
 
 
+def probe_rzd(rep: Report, train_cfg, dates: list[str], env: dict, raw_dir: Path | None, title: str = "") -> None:
+    rep.head(f"РЖД · станции{title}")
+    route = {}
+    try:
+        for side, name, prefer in (("from", train_cfg.from_name, "station"), ("to", train_cfg.to_name, "city")):
+            if side == "from" and train_cfg.from_code or side == "to" and train_cfg.to_code:
+                code = train_cfg.from_code if side == "from" else train_cfg.to_code
+                route[side] = {"code": code, "name": name}
+                rep.ok(f"«{name}»: код {code} задан вручную")
+                continue
+            if name.lower() == "москва":
+                prefer = "city"
+            candidates, meta = rzd.suggest_stations(name, env)
+            save_raw(raw_dir, f"suggest-{side}.json", candidates)
+            found = rzd.pick_station(candidates, name, prefer)
+            if not found and name.lower() == "москва":
+                found = {"name": "Москва", "code": rzd.MOSCOW_CITY_CODE, "kind": "fallback"}
+            if not found:
+                rep.bad(f"Станция «{name}» не найдена в подсказках РЖД ({meta['status']}, {meta['ms']} мс)")
+                for c in candidates[:8]:
+                    rep.info(f"кандидат: {c['name']} · код {c['code']} · {c['kind']}")
+                rep.info("Укажите код вручную в config.yaml: from_code / to_code")
+                continue
+            route[side] = found
+            rep.ok(f"«{name}» → {found['name']} · код {found['code']} · {found['kind'] or '—'} ({meta['status']}, {meta['ms']} мс)")
+    except SourceError as exc:
+        rep.bad(f"{exc}")
+        rep.info(HINTS.get(exc.kind, ""))
+        if exc.meta.get("excerpt"):
+            rep.block("Фрагмент ответа", exc.meta["excerpt"])
+
+    rep.head(f"РЖД · поезда{title}")
+    if len(route) < 2:
+        rep.warn("Без кодов станций поезда не проверить")
+        return
+    for date in dates:
+        try:
+            res = rzd.search_trains(route["from"]["code"], route["to"]["code"], date, env)
+        except SourceError as exc:
+            rep.bad(f"{fmt_date(date)}: {exc}")
+            rep.info(HINTS.get(exc.kind, ""))
+            if exc.meta.get("excerpt"):
+                rep.block("Фрагмент ответа", exc.meta["excerpt"])
+            continue
+        save_raw(raw_dir, f"trains-{date}.json", res["raw"])
+        trains = res["trains"]
+        rep.ok(f"{fmt_date(date)}: ответ разобран, поездов {len(trains)} ({res['meta']['status']}, {res['meta']['ms']} мс){' · выдача неполная' if res['partial'] else ''}")
+        if not trains:
+            rep.info("РЖД не показал ни одного поезда на эту дату (для даты, до которой ещё далеко, это нормально)")
+        for t in trains:
+            mark = "★ " if train_matches(train_cfg.trains, t["number"]) and train_cfg.trains else ""
+            state = seats_word(t["seats"]) if t["seats"] else ("нет данных о местах" if t["no_data"] else "мест нет")
+            price = f", от {rub(t['min_price'])}" if t["min_price"] is not None else ""
+            rep.info(f"{mark}{t['display_number']} {title_case(t['from'])} {clock(t['depart_local'])} → {title_case(t['to'])} {clock(t['arrive_local'])}: {state}{price}")
+            for g in t["groups"]:
+                rep.info(f"    {g['label']}: {seats_word(g['seats'])}{' (число мест не распознано)' if g.get('approx') else ''}" + (f", от {rub(g['min_price'])}" if g["min_price"] is not None else ""))
+        if res.get("excerpt"):
+            rep.block(f"Фрагмент ответа {date} (первые 1500 символов)", res["excerpt"])
+
+
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(prog="python -m dozor probe")
     parser.add_argument("--root", default=".")
@@ -194,63 +254,12 @@ def main(argv: list[str]) -> int:
     if env.get("RZD_PROXY"):
         rep.warn("Используется прокси из секрета RZD_PROXY")
 
-    # --- РЖД ------------------------------------------------------------------------------
-    rep.head("РЖД · станции")
-    route = {}
-    try:
-        for side, name, prefer in (("from", cfg.train.from_name, "station"), ("to", cfg.train.to_name, "city")):
-            if side == "from" and cfg.train.from_code or side == "to" and cfg.train.to_code:
-                code = cfg.train.from_code if side == "from" else cfg.train.to_code
-                route[side] = {"code": code, "name": name}
-                rep.ok(f"«{name}»: код {code} задан вручную")
-                continue
-            candidates, meta = rzd.suggest_stations(name, env)
-            save_raw(raw_dir, f"suggest-{side}.json", candidates)
-            found = rzd.pick_station(candidates, name, prefer)
-            if not found and name.lower() == "москва":
-                found = {"name": "Москва", "code": rzd.MOSCOW_CITY_CODE, "kind": "fallback"}
-            if not found:
-                rep.bad(f"Станция «{name}» не найдена в подсказках РЖД ({meta['status']}, {meta['ms']} мс)")
-                for c in candidates[:8]:
-                    rep.info(f"кандидат: {c['name']} · код {c['code']} · {c['kind']}")
-                rep.info("Укажите код вручную в config.yaml: train.from_code / train.to_code")
-                continue
-            route[side] = found
-            rep.ok(f"«{name}» → {found['name']} · код {found['code']} · {found['kind'] or '—'} ({meta['status']}, {meta['ms']} мс)")
-    except SourceError as exc:
-        rep.bad(f"{exc}")
-        rep.info(HINTS.get(exc.kind, ""))
-        if exc.meta.get("excerpt"):
-            rep.block("Фрагмент ответа", exc.meta["excerpt"])
-
-    rep.head("РЖД · поезда")
-    dates = [args.date] if args.date else cfg.train.dates
-    if len(route) < 2:
-        rep.warn("Без кодов станций поезда не проверить")
-    else:
-        for date in dates:
-            try:
-                res = rzd.search_trains(route["from"]["code"], route["to"]["code"], date, env)
-            except SourceError as exc:
-                rep.bad(f"{fmt_date(date)}: {exc}")
-                rep.info(HINTS.get(exc.kind, ""))
-                if exc.meta.get("excerpt"):
-                    rep.block("Фрагмент ответа", exc.meta["excerpt"])
-                continue
-            save_raw(raw_dir, f"trains-{date}.json", res["raw"])
-            trains = res["trains"]
-            rep.ok(f"{fmt_date(date)}: ответ разобран, поездов {len(trains)} ({res['meta']['status']}, {res['meta']['ms']} мс){' · выдача неполная' if res['partial'] else ''}")
-            if not trains:
-                rep.info("РЖД не показал ни одного поезда на эту дату (для даты, до которой ещё далеко, это нормально)")
-            for t in trains:
-                mark = "★ " if train_matches(cfg.train.trains, t["number"]) and cfg.train.trains else ""
-                state = seats_word(t["seats"]) if t["seats"] else ("нет данных о местах" if t["no_data"] else "мест нет")
-                price = f", от {rub(t['min_price'])}" if t["min_price"] is not None else ""
-                rep.info(f"{mark}{t['display_number']} {title_case(t['from'])} {clock(t['depart_local'])} → {title_case(t['to'])} {clock(t['arrive_local'])}: {state}{price}")
-                for g in t["groups"]:
-                    rep.info(f"    {g['label']}: {seats_word(g['seats'])}{' (число мест не распознано)' if g.get('approx') else ''}" + (f", от {rub(g['min_price'])}" if g["min_price"] is not None else ""))
-            if res.get("excerpt"):
-                rep.block(f"Фрагмент ответа {date} (первые 1500 символов)", res["excerpt"])
+    # --- РЖД ---------------------------------------------------------------------------------
+    for prefix, train_cfg in cfg.train_routes():
+        if prefix != "train" and not train_cfg.enabled:
+            continue
+        title = "" if prefix == "train" else f" · {train_cfg.from_name} → {train_cfg.to_name}"
+        probe_rzd(rep, train_cfg, [args.date] if args.date else train_cfg.dates, env, raw_dir, title)
 
     # --- Aviasales --------------------------------------------------------------------------
     rep.head("Aviasales · рейсы")

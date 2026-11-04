@@ -38,6 +38,7 @@ class Train:
     trains: list[str] = field(default_factory=list)  # пусто = любой прямой поезд
     sources: list[str] = field(default_factory=lambda: ["rzd"])
     links: list[dict] = field(default_factory=lambda: copy.deepcopy(DEFAULT_TRAIN_LINKS))
+    label: str = ""   # пометка в карточке и уведомлениях, например «эксперимент» (для extra_trains)
 
 
 @dataclass
@@ -76,8 +77,13 @@ class Notify:
 @dataclass
 class Config:
     train: Train = field(default_factory=Train)
+    extra_trains: list[Train] = field(default_factory=list)   # дополнительные маршруты поезда
     flights: Flights = field(default_factory=Flights)
     notify: Notify = field(default_factory=Notify)
+
+    def train_routes(self) -> list[tuple[str, Train]]:
+        """(префикс ключа, маршрут): основной — «train», дополнительные — «train2», «train3»…"""
+        return [("train", self.train)] + [(f"train{i + 2}", t) for i, t in enumerate(self.extra_trains)]
 
 
 def _section(raw: dict, name: str) -> dict:
@@ -156,39 +162,57 @@ def _links(value: object, where: str) -> list[dict]:
     return out
 
 
+def _parse_train(t: dict, route: Train, where: str) -> None:
+    _check_keys(t, {"enabled", "from", "to", "from_code", "to_code", "dates", "trains", "sources", "links", "label"}, where)
+    if "enabled" in t:
+        route.enabled = _bool(t["enabled"], f"{where}.enabled")
+    if "from" in t:
+        route.from_name = _text(t["from"], f"{where}.from")
+    if "to" in t:
+        route.to_name = _text(t["to"], f"{where}.to")
+    for key in ("from_code", "to_code"):
+        if key in t and str(t[key] or "").strip():
+            code = str(t[key]).strip()
+            if not code.isdigit() or not 4 <= len(code) <= 9:
+                raise ConfigError(f"{where}.{key}: код станции — только цифры")
+            setattr(route, key, code)
+    if "dates" in t:
+        route.dates = _dates(t["dates"], f"{where}.dates")
+    if "trains" in t:
+        trains = t["trains"] or []
+        if not isinstance(trains, list) or len(trains) > 10 or any(len(str(x)) > 12 for x in trains):
+            raise ConfigError(f"{where}.trains: список до 10 номеров поездов, например [\"301У\"]")
+        route.trains = [str(x).strip() for x in trains if str(x).strip()]
+    if "sources" in t:
+        route.sources = _sources(t["sources"], f"{where}.sources", TRAIN_SOURCES)
+    if "links" in t:
+        route.links = _links(t["links"], f"{where}.links")
+    if t.get("label"):
+        route.label = _text(t["label"], f"{where}.label", 30)
+
+
 def parse_config(raw: object) -> Config:
     if raw is None:
         raw = {}
     if not isinstance(raw, dict):
         raise ConfigError("config.yaml должен состоять из блоков train, flights, notify")
-    _check_keys(raw, {"train", "flights", "notify"}, "config.yaml")
+    _check_keys(raw, {"train", "extra_trains", "flights", "notify"}, "config.yaml")
     cfg = Config()
 
-    t = _section(raw, "train")
-    _check_keys(t, {"enabled", "from", "to", "from_code", "to_code", "dates", "trains", "sources", "links"}, "train")
-    if "enabled" in t:
-        cfg.train.enabled = _bool(t["enabled"], "train.enabled")
-    if "from" in t:
-        cfg.train.from_name = _text(t["from"], "train.from")
-    if "to" in t:
-        cfg.train.to_name = _text(t["to"], "train.to")
-    for key in ("from_code", "to_code"):
-        if key in t and str(t[key] or "").strip():
-            code = str(t[key]).strip()
-            if not code.isdigit() or not 4 <= len(code) <= 9:
-                raise ConfigError(f"train.{key}: код станции — только цифры")
-            setattr(cfg.train, key, code)
-    if "dates" in t:
-        cfg.train.dates = _dates(t["dates"], "train.dates")
-    if "trains" in t:
-        trains = t["trains"] or []
-        if not isinstance(trains, list) or len(trains) > 10 or any(len(str(x)) > 12 for x in trains):
-            raise ConfigError("train.trains: список до 10 номеров поездов, например [\"301У\"]")
-        cfg.train.trains = [str(x).strip() for x in trains if str(x).strip()]
-    if "sources" in t:
-        cfg.train.sources = _sources(t["sources"], "train.sources", TRAIN_SOURCES)
-    if "links" in t:
-        cfg.train.links = _links(t["links"], "train.links")
+    _parse_train(_section(raw, "train"), cfg.train, "train")
+    extra = raw.get("extra_trains") or []
+    if not isinstance(extra, list) or len(extra) > 5:
+        raise ConfigError("extra_trains: список до 5 маршрутов вида  - {from: Москва, to: Уруссу, dates: [2026-12-25]}")
+    for i, item in enumerate(extra):
+        where = f"extra_trains[{i + 1}]"
+        if not isinstance(item, dict):
+            raise ConfigError(f"{where}: нужен блок с настройками from, to, dates")
+        for key in ("from", "to", "dates"):
+            if key not in item:
+                raise ConfigError(f"{where}: не указано «{key}»")
+        route = Train()
+        _parse_train(item, route, where)
+        cfg.extra_trains.append(route)
 
     f = _section(raw, "flights")
     _check_keys(f, {"enabled", "origin", "destination", "dates", "direct_only", "interval_min", "currency", "sources", "links"}, "flights")

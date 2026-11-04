@@ -64,6 +64,11 @@ button { font: inherit; color: inherit; }
 .row-sub { color: var(--ink-2); font-size: 14px; }
 .stale { color: var(--muted); font-size: 12px; }
 
+.day { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; scroll-margin-top: 12px; }
+.day .actions { margin-top: 10px; }
+.day.focus { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+.day-title { font-size: 15px; font-weight: 650; }
+
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; cursor: pointer; flex: 1 1 auto; text-align: center; }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }

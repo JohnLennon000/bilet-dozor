@@ -22,7 +22,7 @@ class World:
             if self.rzd_error:
                 raise self.rzd_error
             p = rzd.parse_train_pricing(self.rzd)
-            return {"trains": p["trains"], "partial": p["partial"], "route": {"from": {"code": "2060500"}, "to": {"code": "2000000"}}, "meta": {"status": 200, "ms": 5}, "excerpt": ""}
+            return {"trains": p["trains"], "partial": p["partial"], "route": {"from": {"code": "2024750"}, "to": {"code": "2000000"}}, "meta": {"status": 200, "ms": 5}, "excerpt": ""}
 
         def tp_fetch(cfg, date, ctx):
             if self.tp_error:
@@ -291,3 +291,43 @@ def test_digest_once_a_day_after_digest_hour():
     assert Monitor(rig.cfg, rig.state, rig.history, rig.env, rig.now + 3600).maybe_digest(True) is None   # в тот же день
     assert Monitor(rig.cfg, rig.state, rig.history, rig.env, rig.now + 86400).maybe_digest(True) is not None
     assert Monitor(make_cfg(), {"watches": {}, "sources": {}, "events": []}, {"series": {}}, {}, rig.now).maybe_digest(False) is None
+
+
+# ───────────────────────── дополнительный маршрут поезда (extra_trains) ─────────────────────────
+
+def _cfg_with_extra():
+    from dozor.config import parse_config
+    return parse_config({
+        "train": {"dates": ["2027-01-09"], "from_code": "2024750", "to_code": "2000000"},
+        "extra_trains": [{"from": "Москва", "to": "Уруссу", "dates": ["2026-12-25"], "label": "эксперимент"}],
+        "flights": {"dates": ["2027-01-09"]},
+        "notify": {"price_gap_min": 0},
+    })
+
+
+def test_extra_route_is_a_separate_watch_with_its_own_stations():
+    rig = Rig(_cfg_with_extra())
+    asked = []
+    base = rig.world.fetchers()[("train", "rzd")]
+
+    def spy(cfg, date, ctx):
+        asked.append((cfg.train.from_name, cfg.train.to_name, date))
+        return base(cfg, date, ctx)
+
+    mon = Monitor(rig.cfg, rig.state, rig.history, rig.env, rig.now + 600, fetchers={**rig.world.fetchers(), ("train", "rzd"): spy})
+    mon.run()
+    assert ("Туймазы", "Москва", "2027-01-09") in asked and ("Москва", "Уруссу", "2026-12-25") in asked
+    assert set(rig.state["watches"]) >= {"train:2027-01-09", "train2:2026-12-25"}
+    s = {x["key"]: x for x in mon.summaries()}
+    assert s["train2:2026-12-25"]["subtitle"] == "Москва → Уруссу, прямой" and s["train2:2026-12-25"]["label"] == "эксперимент"
+    assert "Москва → Уруссу" in mon.digest_line(s["train2:2026-12-25"])
+
+
+def test_extra_route_events_and_history_do_not_mix_with_main_route():
+    rig = Rig(_cfg_with_extra())
+    rig.run()
+    rig.world.rzd = rzd_response([train("301У", [group("ReservedSeat", 4, 2500)])])
+    _, ev = rig.run()
+    titles = {e["watch"]: e["title"] for e in ev if e["kind"] == "tickets_appeared"}
+    assert "Уруссу" in titles["train2:2026-12-25"] and "Уруссу" not in titles["train:2027-01-09"]
+    assert "train|2027-01-09|301У" in rig.history["series"] and "train2|2026-12-25|301У" in rig.history["series"]

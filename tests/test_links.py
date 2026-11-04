@@ -9,9 +9,9 @@ def test_slug():
 
 def test_train_links_use_resolved_station_codes():
     cfg = make_cfg()
-    route = {"from": {"code": "2060500"}, "to": {"code": "2000000"}}
+    route = {"from": {"code": "2024750"}, "to": {"code": "2000000"}}
     links = train_links(cfg, route, "2027-01-09")
-    assert links[0] == {"label": "Купить на РЖД", "url": "https://ticket.rzd.ru/searchresults/v/1/2060500/2000000/2027-01-09", "primary": True}
+    assert links[0] == {"label": "Купить на РЖД", "url": "https://ticket.rzd.ru/searchresults/v/1/2024750/2000000/2027-01-09", "primary": True}
     assert links[1]["url"] == "https://travel.yandex.ru/trains/tuymazy--moskva/?when=2027-01-09"
     assert links[2]["url"] == "https://www.tutu.ru/poezda/Tuymazy/Moskva/"
 

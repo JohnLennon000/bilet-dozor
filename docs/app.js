@@ -121,9 +121,14 @@
     return points.slice(i > 0 ? i - 1 : 0); // последняя точка до окна: её цена действовала на левом краю
   }
 
-  function chart(watch) {
+  function chart(watches) {   // одна карточка или несколько (рейсы на разные даты): линии подписываются датой
     var wrap = el("div", { class: "chart" });
-    var all = seriesFor(watch.key).slice(0, 4);
+    var many = watches.length > 1;
+    var all = [];
+    watches.forEach(function (w) {
+      seriesFor(w.key).forEach(function (s) { all.push(many ? { label: longDate(w.date).replace(/ \(.*\)$/, "").slice(0, 5) + (s.type === "train" ? " " + s.label : ""), points: s.points } : s); });
+    });
+    all = all.slice(0, 4);
     var seconds = range === "day" ? 86400 : range === "week" ? 7 * 86400 : 0;
     var since = seconds ? nowSec() - seconds : 0;
     var lines = all.map(function (s) { return { label: s.label, points: rangePoints(s.points, since) }; });
@@ -246,14 +251,66 @@
 
     return el("article", { class: "card" + (hot ? " hot" : ""), id: "w-" + w.key.replace(":", "-"), "data-watch": w.key },
       el("div", { class: "card-head" },
-        el("div", {}, el("h2", { class: "card-title", text: (w.type === "train" ? "🚆 " : "✈️ ") + w.title + " · " + longDate(w.date) }), el("div", { class: "card-sub", text: w.subtitle })),
+        el("div", {}, el("h2", { class: "card-title", text: (w.type === "train" ? "🚆 " : "✈️ ") + w.title + " · " + longDate(w.date) }), el("div", { class: "card-sub", text: w.subtitle + (w.label ? " · " + w.label : "") })),
         statusChip(w)),
       big,
       w.type === "train" ? trainRows(w) : offerRows(w),
-      chart(w),
+      chart([w]),
       actions,
       note,
       el("p", { class: "small muted", text: [when, srcs ? "источник: " + srcs : ""].filter(Boolean).join(" · ") }));
+  }
+
+  function bestOf(list) {
+    var priced = list.filter(function (w) { return w.available && w.min_price != null; });
+    return priced.sort(function (a, b) { return a.min_price - b.min_price; })[0] || null;
+  }
+
+  function flightGroupCard(list) {
+    // рейсы на соседние даты — одна карточка: по разделу на дату, общий график
+    if (list.length === 1) return watchCard(list[0]);
+    var any = list.some(function (w) { return w.available; });
+    var best = bestOf(list);
+    var dates = list.map(function (w) { return longDate(w.date); });
+    var chip = any ? el("span", { class: "chip good", text: "Есть билеты" })
+      : list.some(function (w) { return w.status === "error"; }) ? el("span", { class: "chip warn", text: "Нет билетов · ошибка" })
+      : list.every(function (w) { return w.status === "pending"; }) ? el("span", { class: "chip", text: "Ещё не проверял" })
+      : el("span", { class: "chip", text: "Билетов нет" });
+    var sections = list.map(function (w) {
+      var links = w.links.length ? el("div", { class: "actions" }, w.links.map(function (l) {
+        return el("a", { class: "btn" + (l.primary && w.available ? " primary" : ""), href: l.url, target: "_blank", rel: "noopener", text: l.label + " · " + dates[list.indexOf(w)].slice(0, 5) });
+      })) : null;
+      var state = w.status === "pending" ? "ещё не проверял" : w.available ? (w.offers.length + " вар., от " + rub(w.min_price)) : "билетов нет";
+      return el("section", { class: "day", id: "w-" + w.key.replace(":", "-"), "data-watch": w.key },
+        el("div", { class: "row-head" }, el("h3", { class: "day-title", text: longDate(w.date) }), el("span", { text: state })),
+        w.available ? offerRows(w) : null,
+        w.error ? el("p", { class: "small", text: "Последняя проверка не удалась: " + w.error }) : null,
+        w.first_available_at ? el("p", { class: "small muted", text: "Билеты впервые появились " + stamp(w.first_available_at) + " МСК." }) : null,
+        links);
+    });
+    var nobody = !any ? el("p", { class: "muted", text: "Прямых билетов в кэше Aviasales сейчас нет. Это не значит, что их нет в продаже: кэш обновляется по поискам пользователей." }) : null;
+    var big = best ? el("div", { class: "big" }, el("span", { class: "price", text: "от " + rub(best.min_price) }), el("span", { class: "small muted", text: " · " + longDate(best.date) })) : null;
+    var okAt = list.map(function (w) { return w.last_ok_at || 0; }).reduce(function (a, b) { return Math.max(a, b); }, 0);
+    var srcs = (list[0].sources || []).map(function (n) { return (summary.sources[n] && summary.sources[n].title) || n; }).join(", ");
+    return el("article", { class: "card" + (any ? " hot" : ""), id: "w-flights", "data-watch": list[0].key },
+      el("div", { class: "card-head" },
+        el("div", {}, el("h2", { class: "card-title", text: "✈️ Самолёт · " + dates.map(function (d) { return d.slice(0, 5); }).join(" или ") + "." + list[0].date.slice(0, 4) }), el("div", { class: "card-sub", text: list[0].subtitle })),
+        chip),
+      big,
+      nobody,
+      sections,
+      chart(list),
+      el("p", { class: "small muted", text: [okAt ? "Данные от " + stamp(okAt) + " МСК" : "", srcs ? "источник: " + srcs : ""].filter(Boolean).join(" · ") }));
+  }
+
+  function cards(watches) {
+    var flights = watches.filter(function (w) { return w.type === "flight"; });
+    var out = [];
+    watches.forEach(function (w) {
+      if (w.type !== "flight") out.push(watchCard(w));
+      else if (w === flights[0]) out.push(flightGroupCard(flights));
+    });
+    return out;
   }
 
   // ───────────────────────── уведомления ─────────────────────────
@@ -440,7 +497,7 @@
     document.getElementById("banners").replaceChildren.apply(document.getElementById("banners"), banners);
     var box = document.getElementById("watches");
     if (!summary.watches.length) renderNothing();
-    else box.replaceChildren.apply(box, summary.watches.map(watchCard));
+    else box.replaceChildren.apply(box, cards(summary.watches));
     renderNotify(); renderEvents(); renderSources(); renderFoot();
     focusFromHash();
   }

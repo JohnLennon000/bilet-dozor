@@ -64,13 +64,13 @@ def test_empty_list_is_valid_no_trains():
 
 def test_suggestions_and_station_choice():
     payload = {"city": [{"name": "Москва", "ExpressCode": "2000000", "nodeType": "city"}],
-               "train": [{"name": "Туймазы", "ExpressCode": "2060500", "nodeType": "station"}, {"name": "Туймазы-2", "ExpressCode": "1", "nodeType": "station"}]}
+               "train": [{"name": "Туймазы", "ExpressCode": "2024750", "nodeType": "station"}, {"name": "Туймазы-2", "ExpressCode": "1", "nodeType": "station"}]}
     c = rzd.parse_suggestions(payload)
-    assert rzd.pick_station(c, "туймазы", "station")["code"] == "2060500"
+    assert rzd.pick_station(c, "туймазы", "station")["code"] == "2024750"
     assert rzd.pick_station(c, "Москва", "city")["code"] == "2000000"
     assert rzd.pick_station(c, "Урюпинск") is None
 
 
 def test_suggestions_alternative_shape():
-    c = rzd.parse_suggestions([{"Name": "Туймазы", "Codes": {"Railway": "2060500"}, "SubType": "Станция"}])
-    assert c[0]["code"] == "2060500"
+    c = rzd.parse_suggestions([{"Name": "Туймазы", "Codes": {"Railway": "2024750"}, "SubType": "Станция"}])
+    assert c[0]["code"] == "2024750"

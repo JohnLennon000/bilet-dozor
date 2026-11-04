@@ -63,7 +63,7 @@ def tp_response(offers: list, **extra) -> dict:
 
 def make_cfg(**over):
     raw = {
-        "train": {"dates": ["2027-01-09"], "from_code": "2060500", "to_code": "2000000"},
+        "train": {"dates": ["2027-01-09"], "from_code": "2024750", "to_code": "2000000"},
         "flights": {"dates": ["2027-01-09", "2027-01-10"]},
         "notify": {"price_gap_min": 0},
     }

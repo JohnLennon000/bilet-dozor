@@ -178,6 +178,8 @@ def resolve_route(train, cache: dict, env: dict, now: int, session=None) -> dict
         if manual:
             out[side] = {"code": str(manual), "name": name, "source": "manual"}
             continue
+        if norm_name(name) == "москва":
+            prefer = "city"   # Москва — всегда все вокзалы, и в начале, и в конце маршрута
         key = f"{norm_name(name)}|{prefer}"
         hit = cache.get(key)
         if hit and now - hit["at"] < CACHE_DAYS * 86400:
