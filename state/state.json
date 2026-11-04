@@ -155,7 +155,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793758138
+   "tried_at": 1793759351
   },
   "flight:2027-01-10": {
    "good": {
@@ -179,16 +179,16 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793758138
+   "tried_at": 1793759351
   },
   "train2:2026-12-25": {
    "good": {
-    "at": 1793758785,
+    "at": 1793759351,
     "snapshot": {
      "all_numbers": [
       "302М"
      ],
-     "at": 1793758785,
+     "at": 1793759351,
      "date": "2026-12-25",
      "partial": false,
      "route": {
@@ -204,7 +204,7 @@
        "code": "2024722",
        "kind": "city",
        "name": "Уруссу",
-       "source": "suggest"
+       "source": "cache"
       }
      },
      "trains": [
