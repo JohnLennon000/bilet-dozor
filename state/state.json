@@ -1,6 +1,21 @@
 {
  "events": [
   {
+   "body": "Проверка 09.01.2027 (сб) работает в штатном режиме.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_recovered",
+   "t": 1793756197,
+   "title": "✅ РЖД снова отвечает",
+   "urgent": false,
+   "watch": "train:2027-01-09"
+  },
+  {
    "body": "РЖД: Нет связи с источником (таймаут). Не получается уже 152 мин — пока это не исправлено, уведомления о билетах не придут.",
    "delivery": {
     "push": {
@@ -42,11 +57,17 @@
  },
  "sources": {
   "rzd": {
+   "excerpt": "{\n  \"OriginStationCode\" : \"2024750\",\n  \"DestinationStationCode\" : \"2000000\",\n  \"Trains\" : [ {\n    \"CarGroups\" : [ ],\n    \"IsFromSchedule\" : true,\n    \"IsTourPackagePossible\" : false,\n    \"CarTransportationsFreePlacesCount\" : null,\n    \"ActualMovement\" : null,\n    \"CategoryId\" : null,\n    \"ScheduleId\" : null,\n    \"BaggageCarsThreads\" : null,\n    \"CarTransportationCoachesThreads\" : null,\n    \"Provider\" : \"P1\",\n    \"IsWaitListAvailable\" : true,\n    \"BaggageTotalPlaceQuantity\" : 0,\n    \"HasElectronicRegistration\" : true,\n    \"HasCarTransportationCoaches\" : false,\n    \"HasDynamicPricingCars\" : false,\n    \"HasTwoStoreyCars\" : false,\n    \"HasSpecialSaleMode\" : false,\n    \"Carriers\" : [ \"ФПК\" ],\n    \"CarrierDisplayNames\" : [ \"ФПК\" ],\n    \"Id\" : 1,\n    \"IsBranded\" : false,\n    \"CarNumeration\" : \"Unknown\",\n    \"TrainNumber\" : \"301У\",\n    \"TrainNumberToGetRoute\" : \"301У\",\n    \"DisplayTrainNumber\" : \"301У\",\n    \"TrainDescription\" : null,\n    \"TrainName\" : \"\",\n    \"TrainNameEn\" : null,\n    \"TransportType\" : \"Train\",\n    \"OriginName\" : null,\n    \"InitialStationName\" : \"Челябинск-Главный\",\n    \"OriginStationCode\" : \"2024750\",\n    \"OriginStationInfo\" : {\n      \"StationName\" : \"Туймазы\",\n      \"Sta",
    "last_error": {
     "at": 1793755623,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (SSLError)"
+   },
+   "last_ok": {
+    "at": 1793756197,
+    "ms": 1299,
+    "status": 200
    }
   },
   "travelpayouts": {
@@ -64,7 +85,20 @@
    }
   }
  },
- "station_cache": {},
+ "station_cache": {
+  "москва|city": {
+   "at": 1793756197,
+   "code": "2000000",
+   "kind": "city",
+   "name": "Москва"
+  },
+  "туймазы|station": {
+   "at": 1793756197,
+   "code": "2024750",
+   "kind": "station",
+   "name": "Туймазы"
+  }
+ },
  "watches": {
   "flight:2027-01-09": {
    "good": {
@@ -88,7 +122,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793755623
+   "tried_at": 1793756197
   },
   "flight:2027-01-10": {
    "good": {
@@ -112,29 +146,64 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793755623
+   "tried_at": 1793756197
   },
   "train:2027-01-09": {
-   "good": null,
+   "good": {
+    "at": 1793756197,
+    "snapshot": {
+     "all_numbers": [
+      "301У"
+     ],
+     "at": 1793756197,
+     "date": "2027-01-09",
+     "partial": false,
+     "route": {
+      "from": {
+       "at": 1793756197,
+       "code": "2024750",
+       "kind": "station",
+       "name": "Туймазы",
+       "source": "suggest"
+      },
+      "to": {
+       "at": 1793756197,
+       "code": "2000000",
+       "kind": "city",
+       "name": "Москва",
+       "source": "suggest"
+      }
+     },
+     "trains": [
+      {
+       "arrive_local": "2027-01-10T05:00:00",
+       "brand": null,
+       "depart_local": "2027-01-09T05:47:00",
+       "display_number": "301У",
+       "from": "Туймазы",
+       "groups": [],
+       "min_price": null,
+       "no_data": false,
+       "number": "301У",
+       "seats": 0,
+       "to": "Москва Казанская (Казанский вокзал)"
+      }
+     ],
+     "type": "train"
+    }
+   },
    "last": {
-    "at": 1793755623,
-    "error": "Нет связи с источником (SSLError)",
-    "kind": "network",
-    "ok": false
+    "at": 1793756197,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (SSLError)",
-      "notified_at": 1793704905,
-      "since": 1793695730
-     }
-    },
-    "known": [],
+    "health": {},
+    "known": [
+     "301У"
+    ],
     "offers_seen": {}
    }
   }
