@@ -216,16 +216,6 @@
    [
     "rzd"
    ]
-  ],
-  "train2": [
-   "Москва",
-   "Сакмарская",
-   "",
-   "",
-   [],
-   [
-    "rzd"
-   ]
   ]
  },
  "push": {
@@ -337,78 +327,6 @@
     "offers_seen": {}
    },
    "tried_at": 1793908870
-  },
-  "train2:2026-12-29": {
-   "good": {
-    "at": 1793908870,
-    "snapshot": {
-     "all_numbers": [
-      "131М"
-     ],
-     "at": 1793906446,
-     "date": "2026-12-29",
-     "partial": false,
-     "route": {
-      "from": {
-       "at": 1793756197,
-       "code": "2000000",
-       "kind": "city",
-       "name": "Москва",
-       "source": "cache"
-      },
-      "to": {
-       "at": 1793896259,
-       "code": "2040357",
-       "kind": "station",
-       "name": "Сакмарская",
-       "source": "cache"
-      }
-     },
-     "trains": [
-      {
-       "arrive_local": "2026-12-30T23:51:00",
-       "brand": null,
-       "depart_local": "2026-12-29T15:00:00",
-       "display_number": "131М",
-       "from": "Москва Павелецкая (Павелецкий вокзал)",
-       "groups": [
-        {
-         "key": "Luxury|",
-         "label": "СВ",
-         "max_price": 30862.3,
-         "min_price": 30862.3,
-         "seats": 1
-        }
-       ],
-       "min_price": 30862.3,
-       "no_data": false,
-       "number": "131М",
-       "seats": 1,
-       "to": "Сакмарская"
-      }
-     ],
-     "type": "train"
-    }
-   },
-   "last": {
-    "at": 1793909439,
-    "ok": true
-   },
-   "meta": {
-    "available_since": 1793906446,
-    "baselines": {
-     "131М|Luxury|": {
-      "at": 1793906446,
-      "price": 30862.3
-     }
-    },
-    "first_available_at": 1793896259,
-    "health": {},
-    "known": [
-     "131М"
-    ],
-    "offers_seen": {}
-   }
   },
   "train:2027-01-09": {
    "good": {
