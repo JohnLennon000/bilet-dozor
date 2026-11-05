@@ -231,7 +231,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793877050
+   "tried_at": 1793878835
   },
   "flight:2027-01-10": {
    "good": {
@@ -255,12 +255,12 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793877050
+   "tried_at": 1793878835
   },
   "train2:2026-12-29": {
    "good": null,
    "last": {
-    "at": 1793876470,
+    "at": 1793878835,
     "error": "Нет связи с источником (таймаут)",
     "kind": "network",
     "ok": false
