@@ -129,7 +129,7 @@
   ],
   "train2": [
    "Москва",
-   "Уруссу",
+   "Сакмарская",
    "",
    "",
    [],
@@ -242,84 +242,27 @@
    },
    "tried_at": 1793871636
   },
-  "train2:2026-12-25": {
-   "good": {
-    "at": 1793835638,
-    "snapshot": {
-     "all_numbers": [
-      "302М"
-     ],
-     "at": 1793759351,
-     "date": "2026-12-25",
-     "partial": false,
-     "route": {
-      "from": {
-       "at": 1793756197,
-       "code": "2000000",
-       "kind": "city",
-       "name": "Москва",
-       "source": "cache"
-      },
-      "to": {
-       "at": 1793758785,
-       "code": "2024722",
-       "kind": "city",
-       "name": "Уруссу",
-       "source": "cache"
-      }
-     },
-     "trains": [
-      {
-       "arrive_local": "2026-12-26T13:14:00",
-       "brand": null,
-       "depart_local": "2026-12-25T12:52:00",
-       "display_number": "302М",
-       "from": "Москва Казанская (Казанский вокзал)",
-       "groups": [
-        {
-         "key": "Compartment|",
-         "label": "КУПЕ",
-         "max_price": 8531.8,
-         "min_price": 6107.3,
-         "seats": 2
-        }
-       ],
-       "min_price": 6107.3,
-       "no_data": false,
-       "number": "302М",
-       "seats": 2,
-       "to": "Уруссу"
-      }
-     ],
-     "type": "train"
-    }
-   },
+  "train2:2026-12-29": {
+   "good": null,
    "last": {
-    "at": 1793871058,
+    "at": 1793872299,
     "error": "Нет связи с источником (таймаут)",
     "kind": "network",
     "ok": false
    },
    "meta": {
-    "available_since": 1793758785,
-    "baselines": {
-     "302М|Compartment|": {
-      "at": 1793758785,
-      "price": 6107.3
-     }
-    },
-    "first_available_at": 1793758785,
+    "available_since": null,
+    "baselines": {},
+    "first_available_at": null,
     "health": {
      "rzd": {
       "kind": "network",
       "message": "Нет связи с источником (таймаут)",
-      "notified_at": 1793842254,
-      "since": 1793836238
+      "notified_at": null,
+      "since": 1793872299
      }
     },
-    "known": [
-     "302М"
-    ],
+    "known": [],
     "offers_seen": {}
    }
   },
