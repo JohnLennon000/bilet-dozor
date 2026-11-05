@@ -74,6 +74,11 @@ jobs:
           node=$(tailscale status --json | python3 -c 'import json,sys
           d=json.load(sys.stdin)
           print(next((p["TailscaleIPs"][0] for p in (d.get("Peer") or {}).values() if p.get("ExitNodeOption") and p.get("Online")), ""))')
+          # Что видно в сети Tailscale (только имя и флаги — без адресов): помогает понять, почему телефон не подошёл
+          tailscale status --json | python3 -c 'import json,sys
+          d=json.load(sys.stdin)
+          for p in (d.get("Peer") or {}).values():
+              print("устройство:", p.get("HostName"), "| в сети:", "да" if p.get("Online") else "нет", "| выход разрешён:", "да" if p.get("ExitNodeOption") else "нет")' || true
           if [ -z "$node" ]; then
             echo "::warning::Телефон не в сети или не разрешён как выходной узел — проверка идёт напрямую, РЖД может не ответить"
             exit 0
