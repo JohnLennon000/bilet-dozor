@@ -282,7 +282,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793895042
+   "tried_at": 1793896499
   },
   "flight:2027-01-10": {
    "good": {
@@ -306,16 +306,16 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793895042
+   "tried_at": 1793896499
   },
   "train2:2026-12-29": {
    "good": {
-    "at": 1793896259,
+    "at": 1793896499,
     "snapshot": {
      "all_numbers": [
       "131М"
      ],
-     "at": 1793896259,
+     "at": 1793896499,
      "date": "2026-12-29",
      "partial": false,
      "route": {
@@ -331,7 +331,7 @@
        "code": "2040357",
        "kind": "station",
        "name": "Сакмарская",
-       "source": "suggest"
+       "source": "cache"
       }
      },
      "trains": [
