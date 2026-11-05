@@ -2,6 +2,21 @@
  "digest_day": "2026-11-05",
  "events": [
   {
+   "body": "Было 1 место. Продолжаю следить — сообщу, когда появятся снова.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "sold_out",
+   "t": 1793898638,
+   "title": "⛔ 131М · 29.12: билеты закончились · Москва → Сакмарская",
+   "urgent": false,
+   "watch": "train2:2026-12-29"
+  },
+  {
    "body": "СВ — 1 место от 30 862 ₽. Всего 1 место. Москва 15:00 → Сакмарская 23:51.",
    "delivery": {
     "push": {
@@ -310,12 +325,12 @@
   },
   "train2:2026-12-29": {
    "good": {
-    "at": 1793896499,
+    "at": 1793898638,
     "snapshot": {
      "all_numbers": [
       "131М"
      ],
-     "at": 1793896499,
+     "at": 1793898638,
      "date": "2026-12-29",
      "partial": false,
      "route": {
@@ -341,19 +356,11 @@
        "depart_local": "2026-12-29T15:00:00",
        "display_number": "131М",
        "from": "Москва Павелецкая (Павелецкий вокзал)",
-       "groups": [
-        {
-         "key": "Luxury|",
-         "label": "СВ",
-         "max_price": 30862.3,
-         "min_price": 30862.3,
-         "seats": 1
-        }
-       ],
-       "min_price": 30862.3,
+       "groups": [],
+       "min_price": null,
        "no_data": false,
        "number": "131М",
-       "seats": 1,
+       "seats": 0,
        "to": "Сакмарская"
       }
      ],
@@ -365,13 +372,8 @@
     "ok": true
    },
    "meta": {
-    "available_since": 1793896259,
-    "baselines": {
-     "131М|Luxury|": {
-      "at": 1793896259,
-      "price": 30862.3
-     }
-    },
+    "available_since": null,
+    "baselines": {},
     "first_available_at": 1793896259,
     "health": {},
     "known": [
