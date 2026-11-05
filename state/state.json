@@ -2,6 +2,51 @@
  "digest_day": "2026-11-05",
  "events": [
   {
+   "body": "СВ — 1 место от 30 862 ₽. Всего 1 место. Москва 15:00 → Сакмарская 23:51.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "tickets_appeared",
+   "t": 1793896259,
+   "title": "🚆 Появились билеты 131М · 29.12 · Москва → Сакмарская",
+   "urgent": true,
+   "watch": "train2:2026-12-29"
+  },
+  {
+   "body": "Проверка 29.12.2026 (вт) работает в штатном режиме.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "source_recovered",
+   "t": 1793896259,
+   "title": "✅ РЖД снова отвечает · Москва → Сакмарская",
+   "urgent": false,
+   "watch": "train2:2026-12-29"
+  },
+  {
+   "body": "Проверка 09.01.2027 (сб) работает в штатном режиме.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "source_recovered",
+   "t": 1793896259,
+   "title": "✅ РЖД снова отвечает",
+   "urgent": false,
+   "watch": "train:2027-01-09"
+  },
+  {
    "body": "РЖД: Нет связи с источником (таймаут). Не получается уже 99 мин — пока это не исправлено, уведомления о билетах не придут.",
    "delivery": {
     "push": {
@@ -168,8 +213,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1793835638,
-    "ms": 1507,
+    "at": 1793896259,
+    "ms": 1660,
     "status": 200
    }
   },
@@ -194,6 +239,12 @@
    "code": "2000000",
    "kind": "city",
    "name": "Москва"
+  },
+  "сакмарская|city": {
+   "at": 1793896259,
+   "code": "2040357",
+   "kind": "station",
+   "name": "Сакмарская"
   },
   "туймазы|station": {
    "at": 1793756197,
@@ -258,32 +309,80 @@
    "tried_at": 1793895042
   },
   "train2:2026-12-29": {
-   "good": null,
+   "good": {
+    "at": 1793896259,
+    "snapshot": {
+     "all_numbers": [
+      "131М"
+     ],
+     "at": 1793896259,
+     "date": "2026-12-29",
+     "partial": false,
+     "route": {
+      "from": {
+       "at": 1793756197,
+       "code": "2000000",
+       "kind": "city",
+       "name": "Москва",
+       "source": "cache"
+      },
+      "to": {
+       "at": 1793896259,
+       "code": "2040357",
+       "kind": "station",
+       "name": "Сакмарская",
+       "source": "suggest"
+      }
+     },
+     "trains": [
+      {
+       "arrive_local": "2026-12-30T23:51:00",
+       "brand": null,
+       "depart_local": "2026-12-29T15:00:00",
+       "display_number": "131М",
+       "from": "Москва Павелецкая (Павелецкий вокзал)",
+       "groups": [
+        {
+         "key": "Luxury|",
+         "label": "СВ",
+         "max_price": 30862.3,
+         "min_price": 30862.3,
+         "seats": 1
+        }
+       ],
+       "min_price": 30862.3,
+       "no_data": false,
+       "number": "131М",
+       "seats": 1,
+       "to": "Сакмарская"
+      }
+     ],
+     "type": "train"
+    }
+   },
    "last": {
-    "at": 1793895642,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1793896259,
+    "ok": true
    },
    "meta": {
-    "available_since": null,
-    "baselines": {},
-    "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": 1793878251,
-      "since": 1793872299
+    "available_since": 1793896259,
+    "baselines": {
+     "131М|Luxury|": {
+      "at": 1793896259,
+      "price": 30862.3
      }
     },
-    "known": [],
+    "first_available_at": 1793896259,
+    "health": {},
+    "known": [
+     "131М"
+    ],
     "offers_seen": {}
    }
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1793835638,
+    "at": 1793896259,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -326,23 +425,14 @@
     }
    },
    "last": {
-    "at": 1793895642,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1793896259,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": 1793842254,
-      "since": 1793836238
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
