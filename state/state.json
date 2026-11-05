@@ -2,6 +2,21 @@
  "digest_day": "2026-11-05",
  "events": [
   {
+   "body": "Проверка 09.01.2027 (сб) работает в штатном режиме.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "source_recovered",
+   "t": 1793919484,
+   "title": "✅ РЖД снова отвечает",
+   "urgent": false,
+   "watch": "train:2027-01-09"
+  },
+  {
    "body": "РЖД: Нет связи с источником (таймаут). Не получается уже 99 мин — пока это не исправлено, уведомления о билетах не придут.",
    "delivery": {
     "push": {
@@ -248,8 +263,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1793909439,
-    "ms": 1656,
+    "at": 1793919484,
+    "ms": 1096,
     "status": 200
    }
   },
@@ -262,8 +277,8 @@
     "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
    },
    "last_ok": {
-    "at": 1793916065,
-    "ms": 131,
+    "at": 1793919484,
+    "ms": 1072,
     "status": 200
    }
   }
@@ -297,7 +312,7 @@
  "watches": {
   "flight:2027-01-09": {
    "good": {
-    "at": 1793916065,
+    "at": 1793919484,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -306,7 +321,7 @@
     }
    },
    "last": {
-    "at": 1793916065,
+    "at": 1793919484,
     "ok": true
    },
    "meta": {
@@ -317,11 +332,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793917851
+   "tried_at": 1793919484
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1793916065,
+    "at": 1793919484,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -330,7 +345,7 @@
     }
    },
    "last": {
-    "at": 1793916065,
+    "at": 1793919484,
     "ok": true
    },
    "meta": {
@@ -341,11 +356,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793917851
+   "tried_at": 1793919484
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1793909439,
+    "at": 1793919484,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -388,23 +403,14 @@
     }
    },
    "last": {
-    "at": 1793919050,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1793919484,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": 1793917234,
-      "since": 1793911238
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
