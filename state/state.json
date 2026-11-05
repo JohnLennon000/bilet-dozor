@@ -167,8 +167,8 @@
     "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
    },
    "last_ok": {
-    "at": 1793869838,
-    "ms": 142,
+    "at": 1793873434,
+    "ms": 160,
     "status": 200
    }
   }
@@ -196,7 +196,7 @@
  "watches": {
   "flight:2027-01-09": {
    "good": {
-    "at": 1793869838,
+    "at": 1793873434,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -205,7 +205,7 @@
     }
    },
    "last": {
-    "at": 1793869838,
+    "at": 1793873434,
     "ok": true
    },
    "meta": {
@@ -216,11 +216,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793871636
+   "tried_at": 1793873434
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1793869838,
+    "at": 1793873434,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -229,7 +229,7 @@
     }
    },
    "last": {
-    "at": 1793869838,
+    "at": 1793873434,
     "ok": true
    },
    "meta": {
@@ -240,7 +240,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793871636
+   "tried_at": 1793873434
   },
   "train2:2026-12-29": {
    "good": null,
