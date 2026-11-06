@@ -308,8 +308,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1793997636,
-    "ms": 1288,
+    "at": 1793999437,
+    "ms": 1236,
     "status": 200
    }
   },
@@ -405,7 +405,7 @@
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1793997636,
+    "at": 1793999437,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -448,23 +448,14 @@
     }
    },
    "last": {
-    "at": 1793998867,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1793999437,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
-      "since": 1793998867
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
