@@ -308,8 +308,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1793993457,
-    "ms": 1351,
+    "at": 1793995266,
+    "ms": 2341,
     "status": 200
    }
   },
@@ -322,8 +322,8 @@
     "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
    },
    "last_ok": {
-    "at": 1793991668,
-    "ms": 1221,
+    "at": 1793995266,
+    "ms": 1381,
     "status": 200
    }
   }
@@ -357,7 +357,7 @@
  "watches": {
   "flight:2027-01-09": {
    "good": {
-    "at": 1793991668,
+    "at": 1793995266,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -366,7 +366,7 @@
     }
    },
    "last": {
-    "at": 1793991668,
+    "at": 1793995266,
     "ok": true
    },
    "meta": {
@@ -377,11 +377,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793993457
+   "tried_at": 1793995266
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1793991668,
+    "at": 1793995266,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -390,7 +390,7 @@
     }
    },
    "last": {
-    "at": 1793991668,
+    "at": 1793995266,
     "ok": true
    },
    "meta": {
@@ -401,11 +401,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1793993457
+   "tried_at": 1793995266
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1793993457,
+    "at": 1793995266,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -448,23 +448,14 @@
     }
    },
    "last": {
-    "at": 1793994642,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1793995266,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1793994039
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
