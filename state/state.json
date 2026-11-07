@@ -323,8 +323,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1794042066,
-    "ms": 1322,
+    "at": 1794047458,
+    "ms": 1916,
     "status": 200
    }
   },
@@ -392,7 +392,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794045661
+   "tried_at": 1794047458
   },
   "flight:2027-01-10": {
    "good": {
@@ -416,11 +416,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794045661
+   "tried_at": 1794047458
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1794042066,
+    "at": 1794047458,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -463,23 +463,14 @@
     }
    },
    "last": {
-    "at": 1794045661,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1794047458,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
-      "since": 1794043852
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
