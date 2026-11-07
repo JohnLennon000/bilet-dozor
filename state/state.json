@@ -323,8 +323,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1794047458,
-    "ms": 1916,
+    "at": 1794049270,
+    "ms": 1942,
     "status": 200
    }
   },
@@ -337,8 +337,8 @@
     "message": "Не задан секрет TRAVELPAYOUTS_TOKEN (Settings → Secrets and variables → Actions)"
    },
    "last_ok": {
-    "at": 1794045661,
-    "ms": 103,
+    "at": 1794049270,
+    "ms": 2335,
     "status": 200
    }
   }
@@ -372,7 +372,7 @@
  "watches": {
   "flight:2027-01-09": {
    "good": {
-    "at": 1794045661,
+    "at": 1794049270,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -381,7 +381,7 @@
     }
    },
    "last": {
-    "at": 1794045661,
+    "at": 1794049270,
     "ok": true
    },
    "meta": {
@@ -392,11 +392,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794047458
+   "tried_at": 1794049270
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1794045661,
+    "at": 1794049270,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -405,7 +405,7 @@
     }
    },
    "last": {
-    "at": 1794045661,
+    "at": 1794049270,
     "ok": true
    },
    "meta": {
@@ -416,11 +416,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794047458
+   "tried_at": 1794049270
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1794047458,
+    "at": 1794049270,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -463,23 +463,14 @@
     }
    },
    "last": {
-    "at": 1794048035,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1794049270,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
-      "since": 1794048035
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
