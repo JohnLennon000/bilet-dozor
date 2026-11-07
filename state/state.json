@@ -463,14 +463,23 @@
     }
    },
    "last": {
-    "at": 1794049270,
-    "ok": true
+    "at": 1794049833,
+    "error": "Нет связи с источником (таймаут)",
+    "kind": "network",
+    "ok": false
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {},
+    "health": {
+     "rzd": {
+      "kind": "network",
+      "message": "Нет связи с источником (таймаут)",
+      "notified_at": null,
+      "since": 1794049833
+     }
+    },
     "known": [
      "301У"
     ],
