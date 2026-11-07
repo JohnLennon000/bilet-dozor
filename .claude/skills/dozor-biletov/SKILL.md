@@ -69,7 +69,7 @@ python3 .claude/skills/dozor-biletov/scripts/status.py      # наблюдени
 
 ## Внешние части, которые живут вне репозитория
 
-- **Tailscale**: tailnet `johnlennon000.github`, телефон «Redmi Note 7» — exit node; секрет `TS_AUTHKEY` (reusable+ephemeral, выпущен 4.11.2026 на 90 дней → **истекает около 2 февраля 2027**). Вход по authkey помечен в Actions как устаревший — работает, на OAuth-клиент можно перейти позже.
+- **Tailscale**: tailnet `johnlennon000.github`, телефон «Redmi Note 7» (с 7.11.2026 на кастомной AOSP-прошивке вместо MIUI; в консоли `redmi-note-7`) — exit node. После переустановки Tailscale устройство появляется заново: в консоли ⋯ → Edit route settings → Use as exit node, старую запись удалить; секрет `TS_AUTHKEY` (reusable+ephemeral, выпущен 4.11.2026 на 90 дней → **истекает около 2 февраля 2027**). Вход по authkey помечен в Actions как устаревший — работает, на OAuth-клиент можно перейти позже.
 - **cron-job.org**: задание «Дозор билетов», каждые 10 минут, POST `https://api.github.com/repos/JohnLennon000/bilet-dozor/actions/workflows/check.yml/dispatches`, заголовки `Authorization: Bearer <токен>`, `Accept: application/vnd.github+json`, `X-GitHub-Api-Version: 2022-11-28`, тело `{"ref":"main","inputs":{"cron":"true"}}`. Токен GitHub — срок выбирал пользователь; напомнить продлить до 10 января.
 - **Секреты GitHub**: `TRAVELPAYOUTS_TOKEN` (рейсы), `TS_AUTHKEY`; `PUSH_SECRET` не задан (ключ push выводится из токена — не менять токен без нужды, иначе подписку придётся переоформить).
 
