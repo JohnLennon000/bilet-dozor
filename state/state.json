@@ -2,6 +2,21 @@
  "digest_day": "2026-11-07",
  "events": [
   {
+   "body": "РЖД: Нет связи с источником (таймаут). Не получается уже 99 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1794082833,
+   "title": "⚠️ Не могу проверить билеты РЖД 09.01",
+   "urgent": false,
+   "watch": "train:2027-01-09"
+  },
+  {
    "body": "🚆 09.01: билетов нет, проверено 07.11 09:01\n✈️ 09.01: билетов нет в выдаче Aviasales, проверено 07.11 09:01\n✈️ 10.01: билетов нет в выдаче Aviasales, проверено 07.11 09:01",
    "delivery": {
     "push": {
@@ -317,7 +332,7 @@
   "rzd": {
    "excerpt": "{\n  \"OriginStationCode\" : \"2024750\",\n  \"DestinationStationCode\" : \"2000000\",\n  \"Trains\" : [ {\n    \"CarGroups\" : [ ],\n    \"IsFromSchedule\" : true,\n    \"IsTourPackagePossible\" : false,\n    \"CarTransportationsFreePlacesCount\" : null,\n    \"ActualMovement\" : null,\n    \"CategoryId\" : null,\n    \"ScheduleId\" : null,\n    \"BaggageCarsThreads\" : null,\n    \"CarTransportationCoachesThreads\" : null,\n    \"Provider\" : \"P1\",\n    \"IsWaitListAvailable\" : true,\n    \"BaggageTotalPlaceQuantity\" : 0,\n    \"HasElectronicRegistration\" : true,\n    \"HasCarTransportationCoaches\" : false,\n    \"HasDynamicPricingCars\" : false,\n    \"HasTwoStoreyCars\" : false,\n    \"HasSpecialSaleMode\" : false,\n    \"Carriers\" : [ \"ФПК\" ],\n    \"CarrierDisplayNames\" : [ \"ФПК\" ],\n    \"Id\" : 1,\n    \"IsBranded\" : false,\n    \"CarNumeration\" : \"Unknown\",\n    \"TrainNumber\" : \"301У\",\n    \"TrainNumberToGetRoute\" : \"301У\",\n    \"DisplayTrainNumber\" : \"301У\",\n    \"TrainDescription\" : null,\n    \"TrainName\" : \"\",\n    \"TrainNameEn\" : null,\n    \"TransportType\" : \"Train\",\n    \"OriginName\" : null,\n    \"InitialStationName\" : \"Челябинск-Главный\",\n    \"OriginStationCode\" : \"2024750\",\n    \"OriginStationInfo\" : {\n      \"StationName\" : \"Туймазы\",\n      \"Sta",
    "last_error": {
-    "at": 1794081033,
+    "at": 1794082833,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (таймаут)"
@@ -463,7 +478,7 @@
     }
    },
    "last": {
-    "at": 1794081033,
+    "at": 1794082833,
     "error": "Нет связи с источником (таймаут)",
     "kind": "network",
     "ok": false
@@ -476,7 +491,7 @@
      "rzd": {
       "kind": "network",
       "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
+      "notified_at": 1794082833,
       "since": 1794076837
      }
     },
