@@ -382,8 +382,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1794124870,
-    "ms": 2506,
+    "at": 1794130218,
+    "ms": 3215,
     "status": 200
    }
   }
@@ -417,7 +417,7 @@
  "watches": {
   "flight:2027-01-09": {
    "good": {
-    "at": 1794124870,
+    "at": 1794130218,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -426,31 +426,22 @@
     }
    },
    "last": {
-    "at": 1794128470,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1794130218,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "travelpayouts": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1794128470
-     }
-    },
+    "health": {},
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794128470
+   "tried_at": 1794130218
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1794124870,
+    "at": 1794130218,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -459,27 +450,18 @@
     }
    },
    "last": {
-    "at": 1794128470,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1794130218,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "travelpayouts": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1794128470
-     }
-    },
+    "health": {},
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794128470
+   "tried_at": 1794130218
   },
   "train:2027-01-09": {
    "good": {
