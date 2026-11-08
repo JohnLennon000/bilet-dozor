@@ -368,8 +368,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1794127839,
-    "ms": 2595,
+    "at": 1794129043,
+    "ms": 2251,
     "status": 200
    }
   },
@@ -526,23 +526,14 @@
     }
    },
    "last": {
-    "at": 1794128470,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1794129043,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1794128470
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
