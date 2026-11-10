@@ -231,6 +231,20 @@
     }));
   }
 
+  function linkPrice(w, l) {
+    // цена в подписи кнопки: Aviasales — минимум по всем найденным рейсам;
+    // ЮВТ Аэро — минимум по рейсам RT из того же кэша Aviasales
+    if (w.type !== "flight") return "";
+    var label = String(l.label || "");
+    var offers = (w.offers || []).filter(function (o) { return o && o.price != null; });
+    var pool = null;
+    if (/aviasales/i.test(label)) pool = offers;
+    else if (/ЮВТ/i.test(label)) pool = offers.filter(function (o) { return o.airline === "RT"; });
+    if (!pool) return "";
+    if (!pool.length) return " · нет в кэше";
+    return " · от " + rub(Math.min.apply(null, pool.map(function (o) { return o.price; })));
+  }
+
   function watchCard(w) {
     var hot = w.available;
     var big = null;
@@ -240,7 +254,7 @@
         c && c.delta ? el("span", { class: "delta " + (c.delta < 0 ? "down" : "up"), text: (c.delta < 0 ? "▼ " : "▲ ") + signed(c.delta) + NBSP + "₽ " + (nowSec() - c.since >= 20 * 3600 ? "за сутки" : "с " + stamp(c.since)) }) : null);
     }
     var actions = w.links.length ? el("div", { class: "actions" }, w.links.map(function (l) {
-      return el("a", { class: "btn" + (l.primary ? " primary" : ""), href: l.url, target: "_blank", rel: "noopener", text: l.label });
+      return el("a", { class: "btn" + (l.primary ? " primary" : ""), href: l.url, target: "_blank", rel: "noopener", text: l.label + linkPrice(w, l) });
     })) : null;
     var note = [];
     if (w.error) note.push(el("p", { class: "small", text: (w.status === "config" ? "" : "Последняя проверка не удалась: ") + w.error }));
@@ -278,15 +292,18 @@
       : el("span", { class: "chip", text: "Билетов нет" });
     var sections = list.map(function (w) {
       var links = w.links.length ? el("div", { class: "actions" }, w.links.map(function (l) {
-        return el("a", { class: "btn" + (l.primary && w.available ? " primary" : ""), href: l.url, target: "_blank", rel: "noopener", text: l.label + " · " + dates[list.indexOf(w)].slice(0, 5) });
+        return el("a", { class: "btn" + (l.primary && w.available ? " primary" : ""), href: l.url, target: "_blank", rel: "noopener", text: l.label + " · " + dates[list.indexOf(w)].slice(0, 5) + linkPrice(w, l) });
       })) : null;
+      var uvt = (w.offers || []).some(function (o) { return o.airline === "RT"; });
+      var linksNote = w.links.length && w.available ? el("p", { class: "small muted", text: uvt ? "Цены на кнопках — из кэша Aviasales; на сайте ЮВТ Аэро цена может отличаться." : "Цены на кнопках — из кэша Aviasales." }) : null;
       var state = w.status === "pending" ? "ещё не проверял" : w.available ? (w.offers.length + " вар., от " + rub(w.min_price)) : "билетов нет";
       return el("section", { class: "day", id: "w-" + w.key.replace(":", "-"), "data-watch": w.key },
         el("div", { class: "row-head" }, el("h3", { class: "day-title", text: longDate(w.date) }), el("span", { text: state })),
         w.available ? offerRows(w) : null,
         w.error ? el("p", { class: "small", text: "Последняя проверка не удалась: " + w.error }) : null,
         w.first_available_at ? el("p", { class: "small muted", text: "Билеты впервые появились " + stamp(w.first_available_at) + " МСК." }) : null,
-        links);
+        links,
+        linksNote);
     });
     var nobody = !any ? el("p", { class: "muted", text: "Прямых билетов в кэше Aviasales сейчас нет. Это не значит, что их нет в продаже: кэш обновляется по поискам пользователей." }) : null;
     var big = best ? el("div", { class: "big" }, el("span", { class: "price", text: "от " + rub(best.min_price) }), el("span", { class: "small muted", text: " · " + longDate(best.date) })) : null;
