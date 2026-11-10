@@ -2,6 +2,21 @@
  "digest_day": "2026-11-10",
  "events": [
   {
+   "body": "ЮВТ Аэро RT301, вылет 19:40 — 9 729 ₽.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "flight_appeared",
+   "t": 1794342787,
+   "title": "✈️ Появились билеты Бугульма → Москва · 27.12",
+   "urgent": true,
+   "watch": "flight:2026-12-27"
+  },
+  {
    "body": "🚆 09.01: билетов нет, проверено 10.11 09:01\n✈️ 09.01: билетов нет в выдаче Aviasales, проверено 10.11 09:01\n✈️ 10.01: билетов нет в выдаче Aviasales, проверено 10.11 09:01",
    "delivery": {
     "push": {
@@ -404,7 +419,7 @@
    }
   },
   "travelpayouts": {
-   "excerpt": "{\"data\":[],\"currency\":\"rub\",\"success\":true}",
+   "excerpt": "{\"data\":[{\"flight_number\":\"301\",\"link\":\"/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9729\\u0026search_date=10112026\\u0026expected_price_uuid=01a1c6e1-f110-8030-a72a-392b4014b438\\u0026static_fare_key=TY%7CP0%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1\\u0026itinerary_key=XaJCgI_tsXir7eUMbgAvHw\\u0026expected_price_source=share\\u0026expected_price_currency=rub\\u0026expected_price=9729\",\"origin_airport\":\"UUA\",\"destination_airport\":\"VKO\",\"departure_at\":\"2026-12-27T19:40:00+03:00\",\"airline\":\"RT\",\"destination\":\"MOW\",\"origin\":\"UUA\",\"price\":9729,\"gate\":\"SuperKassa\",\"return_transfers\":0,\"duration\":105,\"duration_to\":105,\"duration_back\":0,\"transfers\":0}],\"currency\":\"rub\",\"success\":true}",
    "last_error": {
     "at": 1794128470,
     "excerpt": "",
@@ -412,8 +427,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1794340867,
-    "ms": 2041,
+    "at": 1794342787,
+    "ms": 2609,
     "status": 200
    }
   }
@@ -445,6 +460,71 @@
   }
  },
  "watches": {
+  "flight:2026-12-27": {
+   "good": {
+    "at": 1794342787,
+    "snapshot": {
+     "at": 1794342787,
+     "date": "2026-12-27",
+     "offers": [
+      {
+       "airline": "RT",
+       "airline_name": "ЮВТ Аэро",
+       "departure_at": "2026-12-27T19:40:00+03:00",
+       "destination_airport": "VKO",
+       "duration_min": 105,
+       "flight_number": "RT301",
+       "key": "RT301@2026-12-27T19:40:00+03:00",
+       "link": "https://www.aviasales.ru/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9729&search_date=10112026&expected_price_uuid=01a1c6e1-f110-8030-a72a-392b4014b438&static_fare_key=TY%7CP0%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=9729",
+       "origin_airport": "UUA",
+       "price": 9729,
+       "source": "travelpayouts",
+       "stale": false,
+       "transfers": 0
+      }
+     ],
+     "type": "flight"
+    }
+   },
+   "last": {
+    "at": 1794342787,
+    "ok": true
+   },
+   "meta": {
+    "available_since": 1794342787,
+    "baselines": {
+     "cheapest": {
+      "at": 1794342787,
+      "price": 9729
+     }
+    },
+    "first_available_at": 1794342787,
+    "health": {},
+    "known": [
+     "RT301@2026-12-27T19:40:00+03:00"
+    ],
+    "offers_seen": {
+     "RT301@2026-12-27T19:40:00+03:00": {
+      "at": 1794342787,
+      "offer": {
+       "airline": "RT",
+       "airline_name": "ЮВТ Аэро",
+       "departure_at": "2026-12-27T19:40:00+03:00",
+       "destination_airport": "VKO",
+       "duration_min": 105,
+       "flight_number": "RT301",
+       "key": "RT301@2026-12-27T19:40:00+03:00",
+       "link": "https://www.aviasales.ru/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9729&search_date=10112026&expected_price_uuid=01a1c6e1-f110-8030-a72a-392b4014b438&static_fare_key=TY%7CP0%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=9729",
+       "origin_airport": "UUA",
+       "price": 9729,
+       "source": "travelpayouts",
+       "transfers": 0
+      }
+     }
+    }
+   },
+   "tried_at": 1794342787
+  },
   "flight:2027-01-09": {
    "good": {
     "at": 1794340867,
