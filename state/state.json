@@ -383,8 +383,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1794269437,
-    "ms": 1276,
+    "at": 1794271241,
+    "ms": 8299,
     "status": 200
    }
   },
@@ -480,7 +480,7 @@
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1794269437,
+    "at": 1794271241,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -523,23 +523,14 @@
     }
    },
    "last": {
-    "at": 1794270655,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1794271241,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
-      "since": 1794270655
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
