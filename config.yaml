@@ -39,7 +39,7 @@ flights:
   enabled: true
   origin: UUA            # Бугульма (код IATA)
   destination: MOW       # Москва, все аэропорты
-  dates: ["2027-01-09", "2027-01-10"]
+  dates: ["2026-12-27", "2027-01-09", "2027-01-10"]
   direct_only: true      # только прямые рейсы
   interval_min: 30       # как часто проверять рейсы (минут)
   currency: rub
@@ -47,6 +47,8 @@ flights:
   links:
     - label: Найти на Aviasales
       url: "https://www.aviasales.ru/search/{origin}{dd}{mm}{destination}1"
+    - label: ЮВТ Аэро
+      url: "https://uvtaero.ru/"
       primary: true
 
 notify:
