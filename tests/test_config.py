@@ -11,7 +11,7 @@ def test_repo_config_is_valid_and_matches_the_request():
     assert cfg.train.from_name == "Туймазы" and cfg.train.to_name == "Москва"
     assert cfg.train.dates == ["2027-01-09"] and cfg.train.trains == []
     assert (cfg.flights.origin, cfg.flights.destination) == ("UUA", "MOW")
-    assert cfg.flights.dates == ["2027-01-09", "2027-01-10"] and cfg.flights.direct_only
+    assert cfg.flights.dates == ["2026-12-27", "2027-01-09", "2027-01-10"] and cfg.flights.direct_only
     assert cfg.train.links[0]["primary"] and "rzd" in cfg.train.links[0]["url"]
     assert [l["label"] for l in cfg.train.links] == ["Купить на РЖД", "Яндекс Путешествия", "Туту"]
 
