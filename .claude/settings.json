@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sS -m 25 -X POST https://rt.webskyx.com/graphql/query/nemo:*)"
+    ]
+  }
+}
