@@ -467,7 +467,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794326474
+   "tried_at": 1794328260
   },
   "flight:2027-01-10": {
    "good": {
@@ -491,11 +491,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794326474
+   "tried_at": 1794328260
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1794325842,
+    "at": 1794328260,
     "snapshot": {
      "all_numbers": [
       "301У"
