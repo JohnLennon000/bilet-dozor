@@ -434,7 +434,7 @@
    }
   },
   "travelpayouts": {
-   "excerpt": "{\"data\":[{\"flight_number\":\"301\",\"link\":\"/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9710\\u0026search_date=11112026\\u0026expected_price_uuid=01a1ca1c-91c5-8030-e121-3e82fcddb764\\u0026static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1\\u0026itinerary_key=XaJCgI_tsXir7eUMbgAvHw\\u0026expected_price_source=share\\u0026expected_price_currency=rub\\u0026expected_price=9710\",\"origin_airport\":\"UUA\",\"destination_airport\":\"VKO\",\"departure_at\":\"2026-12-27T19:40:00+03:00\",\"airline\":\"RT\",\"destination\":\"MOW\",\"origin\":\"UUA\",\"price\":9710,\"gate\":\"Kupi.com\",\"return_transfers\":0,\"duration\":105,\"duration_to\":105,\"duration_back\":0,\"transfers\":0}],\"currency\":\"rub\",\"success\":true}",
+   "excerpt": "{\"data\":[{\"flight_number\":\"301\",\"link\":\"/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9710\\u0026search_date=11112026\\u0026expected_price_uuid=01a1ca1c-91c5-8030-e121-3e82fcddb764\\u0026static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1\\u0026itinerary_key=XaJCgI_tsXir7eUMbgAvHw\\u0026expected_price_source=share\\u0026expected_price_currency=rub\\u0026expected_price=9707\",\"origin_airport\":\"UUA\",\"destination_airport\":\"VKO\",\"departure_at\":\"2026-12-27T19:40:00+03:00\",\"airline\":\"RT\",\"destination\":\"MOW\",\"origin\":\"UUA\",\"price\":9707,\"gate\":\"Kupi.com\",\"return_transfers\":0,\"duration\":105,\"duration_to\":105,\"duration_back\":0,\"transfers\":0}],\"currency\":\"rub\",\"success\":true}",
    "last_error": {
     "at": 1794128470,
     "excerpt": "",
@@ -442,8 +442,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1794409265,
-    "ms": 1722,
+    "at": 1794412865,
+    "ms": 1093,
     "status": 200
    }
   }
@@ -477,7 +477,7 @@
  "watches": {
   "flight:2026-12-27": {
    "good": {
-    "at": 1794411054,
+    "at": 1794412865,
     "snapshot": {
      "at": 1794411054,
      "date": "2026-12-27",
@@ -502,7 +502,7 @@
     }
    },
    "last": {
-    "at": 1794409265,
+    "at": 1794412865,
     "ok": true
    },
    "meta": {
@@ -520,7 +520,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1794411054,
+      "at": 1794412865,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -538,11 +538,11 @@
      }
     }
    },
-   "tried_at": 1794411054
+   "tried_at": 1794412865
   },
   "flight:2027-01-09": {
    "good": {
-    "at": 1794409265,
+    "at": 1794412865,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -551,7 +551,7 @@
     }
    },
    "last": {
-    "at": 1794409265,
+    "at": 1794412865,
     "ok": true
    },
    "meta": {
@@ -562,11 +562,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794411054
+   "tried_at": 1794412865
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1794409265,
+    "at": 1794412865,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -575,7 +575,7 @@
     }
    },
    "last": {
-    "at": 1794409265,
+    "at": 1794412865,
     "ok": true
    },
    "meta": {
@@ -586,7 +586,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794411054
+   "tried_at": 1794412865
   },
   "train:2027-01-09": {
    "good": {
