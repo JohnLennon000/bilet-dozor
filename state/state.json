@@ -428,8 +428,8 @@
     "message": "Источник вернул не JSON (похоже на страницу-заглушку): "
    },
    "last_ok": {
-    "at": 1794436915,
-    "ms": 1008,
+    "at": 1794441037,
+    "ms": 1617,
     "status": 200
    }
   },
@@ -590,7 +590,7 @@
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1794436915,
+    "at": 1794441037,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -633,23 +633,14 @@
     }
    },
    "last": {
-    "at": 1794439235,
-    "error": "Источник вернул не JSON (похоже на страницу-заглушку): ",
-    "kind": "blocked",
-    "ok": false
+    "at": 1794441037,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "blocked",
-      "message": "Источник вернул не JSON (похоже на страницу-заглушку): ",
-      "notified_at": null,
-      "since": 1794439235
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
