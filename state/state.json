@@ -488,8 +488,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1794804638,
-    "ms": 1595,
+    "at": 1794807055,
+    "ms": 1645,
     "status": 200
    }
   },
@@ -580,7 +580,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1794805272,
+      "at": 1794807055,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -598,7 +598,7 @@
      }
     }
    },
-   "tried_at": 1794805272
+   "tried_at": 1794807055
   },
   "flight:2027-01-09": {
    "good": {
@@ -622,7 +622,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794805272
+   "tried_at": 1794807055
   },
   "flight:2027-01-10": {
    "good": {
@@ -646,11 +646,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794805272
+   "tried_at": 1794807055
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1794804638,
+    "at": 1794807055,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -693,23 +693,14 @@
     }
    },
    "last": {
-    "at": 1794806438,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1794807055,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
-      "since": 1794806438
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
