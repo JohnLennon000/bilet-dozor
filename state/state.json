@@ -518,8 +518,8 @@
     "message": "Ошибка на стороне источника (HTTP 503)"
    },
    "last_ok": {
-    "at": 1794906070,
-    "ms": 3182,
+    "at": 1794907858,
+    "ms": 1623,
     "status": 200
    }
   },
@@ -723,23 +723,14 @@
     }
    },
    "last": {
-    "at": 1794907238,
-    "error": "Ошибка на стороне источника (HTTP 503)",
-    "kind": "server",
-    "ok": false
+    "at": 1794907858,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "server",
-      "message": "Ошибка на стороне источника (HTTP 503)",
-      "notified_at": null,
-      "since": 1794907238
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
