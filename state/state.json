@@ -518,8 +518,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1794900039,
-    "ms": 2033,
+    "at": 1794901836,
+    "ms": 4331,
     "status": 200
    }
   },
@@ -723,23 +723,14 @@
     }
    },
    "last": {
-    "at": 1794901251,
-    "error": "Нет связи с источником (таймаут)",
-    "kind": "network",
-    "ok": false
+    "at": 1794901836,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (таймаут)",
-      "notified_at": null,
-      "since": 1794901251
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
