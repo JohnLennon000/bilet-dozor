@@ -577,8 +577,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1794982237,
-    "ms": 158,
+    "at": 1794985847,
+    "ms": 3619,
     "status": 200
    }
   }
@@ -612,7 +612,7 @@
  "watches": {
   "flight:2026-12-27": {
    "good": {
-    "at": 1794982237,
+    "at": 1794985847,
     "snapshot": {
      "at": 1794957053,
      "date": "2026-12-27",
@@ -637,10 +637,8 @@
     }
    },
    "last": {
-    "at": 1794984046,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1794985847,
+    "ok": true
    },
    "meta": {
     "available_since": 1794342787,
@@ -651,20 +649,13 @@
      }
     },
     "first_available_at": 1794342787,
-    "health": {
-     "travelpayouts": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1794984046
-     }
-    },
+    "health": {},
     "known": [
      "RT301@2026-12-27T19:40:00+03:00"
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1794982237,
+      "at": 1794985847,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -682,11 +673,11 @@
      }
     }
    },
-   "tried_at": 1794984046
+   "tried_at": 1794985847
   },
   "flight:2027-01-09": {
    "good": {
-    "at": 1794982237,
+    "at": 1794985847,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -695,31 +686,22 @@
     }
    },
    "last": {
-    "at": 1794984046,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1794985847,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "travelpayouts": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1794984046
-     }
-    },
+    "health": {},
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794984046
+   "tried_at": 1794985847
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1794982237,
+    "at": 1794985847,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -728,27 +710,18 @@
     }
    },
    "last": {
-    "at": 1794984046,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1794985847,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "travelpayouts": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1794984046
-     }
-    },
+    "health": {},
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794984046
+   "tried_at": 1794985847
   },
   "train:2027-01-09": {
    "good": {
