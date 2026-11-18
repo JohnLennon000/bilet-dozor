@@ -527,7 +527,7 @@
   "rzd": {
    "excerpt": "{\n  \"OriginStationCode\" : \"2024750\",\n  \"DestinationStationCode\" : \"2000000\",\n  \"Trains\" : [ {\n    \"CarGroups\" : [ ],\n    \"IsFromSchedule\" : true,\n    \"IsTourPackagePossible\" : false,\n    \"CarTransportationsFreePlacesCount\" : null,\n    \"ActualMovement\" : null,\n    \"CategoryId\" : null,\n    \"ScheduleId\" : null,\n    \"BaggageCarsThreads\" : null,\n    \"CarTransportationCoachesThreads\" : null,\n    \"Provider\" : \"P1\",\n    \"IsWaitListAvailable\" : true,\n    \"BaggageTotalPlaceQuantity\" : 0,\n    \"HasElectronicRegistration\" : true,\n    \"HasCarTransportationCoaches\" : false,\n    \"HasDynamicPricingCars\" : false,\n    \"HasTwoStoreyCars\" : false,\n    \"HasSpecialSaleMode\" : false,\n    \"Carriers\" : [ \"ФПК\" ],\n    \"CarrierDisplayNames\" : [ \"ФПК\" ],\n    \"Id\" : 1,\n    \"IsBranded\" : false,\n    \"CarNumeration\" : \"Unknown\",\n    \"TrainNumber\" : \"301У\",\n    \"TrainNumberToGetRoute\" : \"301У\",\n    \"DisplayTrainNumber\" : \"301У\",\n    \"TrainDescription\" : null,\n    \"TrainName\" : \"\",\n    \"TrainNameEn\" : null,\n    \"TransportType\" : \"Train\",\n    \"OriginName\" : null,\n    \"InitialStationName\" : \"Челябинск-Главный\",\n    \"OriginStationCode\" : \"2024750\",\n    \"OriginStationInfo\" : {\n      \"StationName\" : \"Туймазы\",\n      \"Sta",
    "last_error": {
-    "at": 1794970865,
+    "at": 1794973234,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (таймаут)"
@@ -547,8 +547,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1794969635,
-    "ms": 110,
+    "at": 1794973234,
+    "ms": 165,
     "status": 200
    }
   }
@@ -582,7 +582,7 @@
  "watches": {
   "flight:2026-12-27": {
    "good": {
-    "at": 1794969635,
+    "at": 1794973234,
     "snapshot": {
      "at": 1794957053,
      "date": "2026-12-27",
@@ -607,7 +607,7 @@
     }
    },
    "last": {
-    "at": 1794969635,
+    "at": 1794973234,
     "ok": true
    },
    "meta": {
@@ -625,7 +625,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1794971434,
+      "at": 1794973234,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -643,11 +643,11 @@
      }
     }
    },
-   "tried_at": 1794971434
+   "tried_at": 1794973234
   },
   "flight:2027-01-09": {
    "good": {
-    "at": 1794969635,
+    "at": 1794973234,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-09",
@@ -656,7 +656,7 @@
     }
    },
    "last": {
-    "at": 1794969635,
+    "at": 1794973234,
     "ok": true
    },
    "meta": {
@@ -667,11 +667,11 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794971434
+   "tried_at": 1794973234
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1794969635,
+    "at": 1794973234,
     "snapshot": {
      "at": 1793704905,
      "date": "2027-01-10",
@@ -680,7 +680,7 @@
     }
    },
    "last": {
-    "at": 1794969635,
+    "at": 1794973234,
     "ok": true
    },
    "meta": {
@@ -691,7 +691,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1794971434
+   "tried_at": 1794973234
   },
   "train:2027-01-09": {
    "good": {
@@ -738,7 +738,7 @@
     }
    },
    "last": {
-    "at": 1794970865,
+    "at": 1794973234,
     "error": "Нет связи с источником (таймаут)",
     "kind": "network",
     "ok": false
