@@ -563,8 +563,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1794979238,
-    "ms": 6727,
+    "at": 1794984643,
+    "ms": 18304,
     "status": 200
    }
   },
@@ -752,7 +752,7 @@
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1794979238,
+    "at": 1794984643,
     "snapshot": {
      "all_numbers": [
       "301У"
@@ -795,23 +795,14 @@
     }
    },
    "last": {
-    "at": 1794984046,
-    "error": "Нет связи с источником (ConnectionError)",
-    "kind": "network",
-    "ok": false
+    "at": 1794984643,
+    "ok": true
    },
    "meta": {
     "available_since": null,
     "baselines": {},
     "first_available_at": null,
-    "health": {
-     "rzd": {
-      "kind": "network",
-      "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
-      "since": 1794980434
-     }
-    },
+    "health": {},
     "known": [
      "301У"
     ],
