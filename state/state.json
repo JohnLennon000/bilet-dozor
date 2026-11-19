@@ -2,6 +2,21 @@
  "digest_day": "2026-11-19",
  "events": [
   {
+   "body": "Было 1 место. Продолжаю следить — сообщу, когда появятся снова.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "sold_out",
+   "t": 1795095638,
+   "title": "⛔ 301У · 09.01: билеты закончились",
+   "urgent": false,
+   "watch": "train:2027-01-09"
+  },
+  {
    "body": "КУПЕ — 1 место от 10 148 ₽. Всего 1 место. Туймазы 05:47 → Москва 05:00.",
    "delivery": {
     "push": {
@@ -623,8 +638,8 @@
     "message": "Нет связи с источником (таймаут)"
    },
    "last_ok": {
-    "at": 1795093267,
-    "ms": 2103,
+    "at": 1795095638,
+    "ms": 1110,
     "status": 200
    }
   },
@@ -715,7 +730,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1795093840,
+      "at": 1795095638,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -733,7 +748,7 @@
      }
     }
    },
-   "tried_at": 1795093840
+   "tried_at": 1795095638
   },
   "flight:2027-01-09": {
    "good": {
@@ -757,7 +772,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795093840
+   "tried_at": 1795095638
   },
   "flight:2027-01-10": {
    "good": {
@@ -781,16 +796,16 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795093840
+   "tried_at": 1795095638
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1795095059,
+    "at": 1795095638,
     "snapshot": {
      "all_numbers": [
       "301У"
      ],
-     "at": 1795095059,
+     "at": 1795095638,
      "date": "2027-01-09",
      "partial": false,
      "route": {
@@ -816,19 +831,11 @@
        "depart_local": "2027-01-09T05:47:00",
        "display_number": "301У",
        "from": "Туймазы",
-       "groups": [
-        {
-         "key": "Compartment|",
-         "label": "КУПЕ",
-         "max_price": 10148.2,
-         "min_price": 10148.2,
-         "seats": 1
-        }
-       ],
-       "min_price": 10148.2,
+       "groups": [],
+       "min_price": null,
        "no_data": false,
        "number": "301У",
-       "seats": 1,
+       "seats": 0,
        "to": "Москва Казанская (Казанский вокзал)"
       }
      ],
@@ -836,17 +843,12 @@
     }
    },
    "last": {
-    "at": 1795093267,
+    "at": 1795095638,
     "ok": true
    },
    "meta": {
-    "available_since": 1795095059,
-    "baselines": {
-     "301У|Compartment|": {
-      "at": 1795095059,
-      "price": 10148.2
-     }
-    },
+    "available_since": null,
+    "baselines": {},
     "first_available_at": 1795095059,
     "health": {},
     "known": [
