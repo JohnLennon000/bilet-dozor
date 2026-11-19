@@ -2,6 +2,51 @@
  "digest_day": "2026-11-19",
  "events": [
   {
+   "body": "Aviasales: Нет связи с источником (ConnectionError). Не получается уже 120 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 1,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1795120847,
+   "title": "⚠️ Не могу проверить рейсы 10.01",
+   "urgent": false,
+   "watch": "flight:2027-01-10"
+  },
+  {
+   "body": "Aviasales: Нет связи с источником (ConnectionError). Не получается уже 120 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 1,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1795120847,
+   "title": "⚠️ Не могу проверить рейсы 09.01",
+   "urgent": false,
+   "watch": "flight:2027-01-09"
+  },
+  {
+   "body": "Aviasales: Нет связи с источником (ConnectionError). Не получается уже 120 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 1,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1795120847,
+   "title": "⚠️ Не могу проверить рейсы 27.12",
+   "urgent": false,
+   "watch": "flight:2026-12-27"
+  },
+  {
    "body": "РЖД: Нет связи с источником (ConnectionError). Не получается уже 90 мин — пока это не исправлено, уведомления о билетах не придут.",
    "delivery": {
     "push": {
@@ -661,7 +706,7 @@
   "travelpayouts": {
    "excerpt": "{\"data\":[{\"flight_number\":\"301\",\"link\":\"/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9690\\u0026search_date=19112026\\u0026expected_price_uuid=01a1f346-f25e-8031-6086-347893da9afb\\u0026static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1\\u0026itinerary_key=XaJCgI_tsXir7eUMbgAvHw\\u0026expected_price_source=share\\u0026expected_price_currency=rub\\u0026expected_price=9693\",\"origin_airport\":\"UUA\",\"destination_airport\":\"VKO\",\"departure_at\":\"2026-12-27T19:40:00+03:00\",\"airline\":\"RT\",\"destination\":\"MOW\",\"origin\":\"UUA\",\"price\":9693,\"gate\":\"Авиасейлс\",\"return_transfers\":0,\"duration\":105,\"duration_to\":105,\"duration_back\":0,\"transfers\":0}],\"currency\":\"rub\",\"success\":true}",
    "last_error": {
-    "at": 1795117247,
+    "at": 1795120847,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (ConnectionError)"
@@ -727,7 +772,7 @@
     }
    },
    "last": {
-    "at": 1795117247,
+    "at": 1795120847,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -745,7 +790,7 @@
      "travelpayouts": {
       "kind": "network",
       "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
+      "notified_at": 1795120847,
       "since": 1795113647
      }
     },
@@ -772,7 +817,7 @@
      }
     }
    },
-   "tried_at": 1795119045
+   "tried_at": 1795120847
   },
   "flight:2027-01-09": {
    "good": {
@@ -785,7 +830,7 @@
     }
    },
    "last": {
-    "at": 1795117247,
+    "at": 1795120847,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -798,14 +843,14 @@
      "travelpayouts": {
       "kind": "network",
       "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
+      "notified_at": 1795120847,
       "since": 1795113647
      }
     },
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795119045
+   "tried_at": 1795120847
   },
   "flight:2027-01-10": {
    "good": {
@@ -818,7 +863,7 @@
     }
    },
    "last": {
-    "at": 1795117247,
+    "at": 1795120847,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -831,14 +876,14 @@
      "travelpayouts": {
       "kind": "network",
       "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
+      "notified_at": 1795120847,
       "since": 1795113647
      }
     },
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795119045
+   "tried_at": 1795120847
   },
   "train:2027-01-09": {
    "good": {
