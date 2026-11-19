@@ -772,7 +772,7 @@
      }
     }
    },
-   "tried_at": 1795117247
+   "tried_at": 1795119045
   },
   "flight:2027-01-09": {
    "good": {
@@ -805,7 +805,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795117247
+   "tried_at": 1795119045
   },
   "flight:2027-01-10": {
    "good": {
@@ -838,7 +838,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795117247
+   "tried_at": 1795119045
   },
   "train:2027-01-09": {
    "good": {
