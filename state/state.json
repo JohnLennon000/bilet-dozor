@@ -2,6 +2,21 @@
  "digest_day": "2026-11-19",
  "events": [
   {
+   "body": "КУПЕ — 1 место от 10 148 ₽. Всего 1 место. Туймазы 05:47 → Москва 05:00.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "tickets_appeared",
+   "t": 1795095059,
+   "title": "🚆 Появились билеты 301У · 09.01",
+   "urgent": true,
+   "watch": "train:2027-01-09"
+  },
+  {
    "body": "🚆 09.01: билетов нет, проверено 19.11 09:01\n✈️ 27.12: есть 1 вариант(ов), от 9 701 ₽, за сутки −1 ₽\n✈️ 09.01: билетов нет в выдаче Aviasales, проверено 19.11 08:40\n✈️ 10.01: билетов нет в выдаче Aviasales, проверено 19.11 08:40",
    "delivery": {
     "push": {
@@ -770,12 +785,12 @@
   },
   "train:2027-01-09": {
    "good": {
-    "at": 1795093267,
+    "at": 1795095059,
     "snapshot": {
      "all_numbers": [
       "301У"
      ],
-     "at": 1793758138,
+     "at": 1795095059,
      "date": "2027-01-09",
      "partial": false,
      "route": {
@@ -801,11 +816,19 @@
        "depart_local": "2027-01-09T05:47:00",
        "display_number": "301У",
        "from": "Туймазы",
-       "groups": [],
-       "min_price": null,
+       "groups": [
+        {
+         "key": "Compartment|",
+         "label": "КУПЕ",
+         "max_price": 10148.2,
+         "min_price": 10148.2,
+         "seats": 1
+        }
+       ],
+       "min_price": 10148.2,
        "no_data": false,
        "number": "301У",
-       "seats": 0,
+       "seats": 1,
        "to": "Москва Казанская (Казанский вокзал)"
       }
      ],
@@ -817,9 +840,14 @@
     "ok": true
    },
    "meta": {
-    "available_since": null,
-    "baselines": {},
-    "first_available_at": null,
+    "available_since": 1795095059,
+    "baselines": {
+     "301У|Compartment|": {
+      "at": 1795095059,
+      "price": 10148.2
+     }
+    },
+    "first_available_at": 1795095059,
     "health": {},
     "known": [
      "301У"
