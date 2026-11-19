@@ -2,6 +2,21 @@
  "digest_day": "2026-11-19",
  "events": [
   {
+   "body": "РЖД: Нет связи с источником (ConnectionError). Не получается уже 90 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 1,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1795118476,
+   "title": "⚠️ Не могу проверить билеты РЖД 09.01",
+   "urgent": false,
+   "watch": "train:2027-01-09"
+  },
+  {
    "body": "Было 1 место. Продолжаю следить — сообщу, когда появятся снова.",
    "delivery": {
     "push": {
@@ -883,7 +898,7 @@
      "rzd": {
       "kind": "network",
       "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": null,
+      "notified_at": 1795118476,
       "since": 1795113066
      }
     },
