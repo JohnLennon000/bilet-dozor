@@ -707,7 +707,7 @@
   "rzd": {
    "excerpt": "{\n  \"OriginStationCode\" : \"2024750\",\n  \"DestinationStationCode\" : \"2000000\",\n  \"Trains\" : [ {\n    \"CarGroups\" : [ ],\n    \"IsFromSchedule\" : true,\n    \"IsTourPackagePossible\" : false,\n    \"CarTransportationsFreePlacesCount\" : null,\n    \"ActualMovement\" : null,\n    \"CategoryId\" : null,\n    \"ScheduleId\" : null,\n    \"BaggageCarsThreads\" : null,\n    \"CarTransportationCoachesThreads\" : null,\n    \"Provider\" : \"P1\",\n    \"IsWaitListAvailable\" : true,\n    \"BaggageTotalPlaceQuantity\" : 0,\n    \"HasElectronicRegistration\" : true,\n    \"HasCarTransportationCoaches\" : false,\n    \"HasDynamicPricingCars\" : false,\n    \"HasTwoStoreyCars\" : false,\n    \"HasSpecialSaleMode\" : false,\n    \"Carriers\" : [ \"ФПК\" ],\n    \"CarrierDisplayNames\" : [ \"ФПК\" ],\n    \"Id\" : 1,\n    \"IsBranded\" : false,\n    \"CarNumeration\" : \"Unknown\",\n    \"TrainNumber\" : \"301У\",\n    \"TrainNumberToGetRoute\" : \"301У\",\n    \"DisplayTrainNumber\" : \"301У\",\n    \"TrainDescription\" : null,\n    \"TrainName\" : \"\",\n    \"TrainNameEn\" : null,\n    \"TransportType\" : \"Train\",\n    \"OriginName\" : null,\n    \"InitialStationName\" : \"Челябинск-Главный\",\n    \"OriginStationCode\" : \"2024750\",\n    \"OriginStationInfo\" : {\n      \"StationName\" : \"Туймазы\",\n      \"Sta",
    "last_error": {
-    "at": 1795182056,
+    "at": 1795183856,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (ConnectionError)"
@@ -721,7 +721,7 @@
   "travelpayouts": {
    "excerpt": "{\"data\":[{\"flight_number\":\"301\",\"link\":\"/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9690\\u0026search_date=19112026\\u0026expected_price_uuid=01a1f346-f25e-8031-6086-347893da9afb\\u0026static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1\\u0026itinerary_key=XaJCgI_tsXir7eUMbgAvHw\\u0026expected_price_source=share\\u0026expected_price_currency=rub\\u0026expected_price=9693\",\"origin_airport\":\"UUA\",\"destination_airport\":\"VKO\",\"departure_at\":\"2026-12-27T19:40:00+03:00\",\"airline\":\"RT\",\"destination\":\"MOW\",\"origin\":\"UUA\",\"price\":9693,\"gate\":\"Авиасейлс\",\"return_transfers\":0,\"duration\":105,\"duration_to\":105,\"duration_back\":0,\"transfers\":0}],\"currency\":\"rub\",\"success\":true}",
    "last_error": {
-    "at": 1795182056,
+    "at": 1795183856,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (ConnectionError)"
@@ -787,7 +787,7 @@
     }
    },
    "last": {
-    "at": 1795182056,
+    "at": 1795183856,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -832,7 +832,7 @@
      }
     }
    },
-   "tried_at": 1795182056
+   "tried_at": 1795183856
   },
   "flight:2027-01-09": {
    "good": {
@@ -845,7 +845,7 @@
     }
    },
    "last": {
-    "at": 1795182056,
+    "at": 1795183856,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -865,7 +865,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795182056
+   "tried_at": 1795183856
   },
   "flight:2027-01-10": {
    "good": {
@@ -878,7 +878,7 @@
     }
    },
    "last": {
-    "at": 1795182056,
+    "at": 1795183856,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -898,7 +898,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795182056
+   "tried_at": 1795183856
   },
   "train:2027-01-09": {
    "good": {
@@ -945,7 +945,7 @@
     }
    },
    "last": {
-    "at": 1795182056,
+    "at": 1795183856,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
