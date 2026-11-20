@@ -692,7 +692,7 @@
   "rzd": {
    "excerpt": "{\n  \"OriginStationCode\" : \"2024750\",\n  \"DestinationStationCode\" : \"2000000\",\n  \"Trains\" : [ {\n    \"CarGroups\" : [ ],\n    \"IsFromSchedule\" : true,\n    \"IsTourPackagePossible\" : false,\n    \"CarTransportationsFreePlacesCount\" : null,\n    \"ActualMovement\" : null,\n    \"CategoryId\" : null,\n    \"ScheduleId\" : null,\n    \"BaggageCarsThreads\" : null,\n    \"CarTransportationCoachesThreads\" : null,\n    \"Provider\" : \"P1\",\n    \"IsWaitListAvailable\" : true,\n    \"BaggageTotalPlaceQuantity\" : 0,\n    \"HasElectronicRegistration\" : true,\n    \"HasCarTransportationCoaches\" : false,\n    \"HasDynamicPricingCars\" : false,\n    \"HasTwoStoreyCars\" : false,\n    \"HasSpecialSaleMode\" : false,\n    \"Carriers\" : [ \"ФПК\" ],\n    \"CarrierDisplayNames\" : [ \"ФПК\" ],\n    \"Id\" : 1,\n    \"IsBranded\" : false,\n    \"CarNumeration\" : \"Unknown\",\n    \"TrainNumber\" : \"301У\",\n    \"TrainNumberToGetRoute\" : \"301У\",\n    \"DisplayTrainNumber\" : \"301У\",\n    \"TrainDescription\" : null,\n    \"TrainName\" : \"\",\n    \"TrainNameEn\" : null,\n    \"TransportType\" : \"Train\",\n    \"OriginName\" : null,\n    \"InitialStationName\" : \"Челябинск-Главный\",\n    \"OriginStationCode\" : \"2024750\",\n    \"OriginStationInfo\" : {\n      \"StationName\" : \"Туймазы\",\n      \"Sta",
    "last_error": {
-    "at": 1795136473,
+    "at": 1795138845,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (ConnectionError)"
@@ -817,7 +817,7 @@
      }
     }
    },
-   "tried_at": 1795137055
+   "tried_at": 1795138845
   },
   "flight:2027-01-09": {
    "good": {
@@ -850,7 +850,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795137055
+   "tried_at": 1795138845
   },
   "flight:2027-01-10": {
    "good": {
@@ -883,7 +883,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795137055
+   "tried_at": 1795138845
   },
   "train:2027-01-09": {
    "good": {
@@ -930,7 +930,7 @@
     }
    },
    "last": {
-    "at": 1795136473,
+    "at": 1795138845,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
