@@ -2,6 +2,51 @@
  "digest_day": "2026-11-21",
  "events": [
   {
+   "body": "Aviasales: Нет связи с источником (ConnectionError). Не получается уже 3030 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 1,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1795295459,
+   "title": "⚠️ Не могу проверить рейсы 10.01",
+   "urgent": false,
+   "watch": "flight:2027-01-10"
+  },
+  {
+   "body": "Aviasales: Нет связи с источником (ConnectionError). Не получается уже 3030 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 1,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1795295459,
+   "title": "⚠️ Не могу проверить рейсы 09.01",
+   "urgent": false,
+   "watch": "flight:2027-01-09"
+  },
+  {
+   "body": "Aviasales: Нет связи с источником (ConnectionError). Не получается уже 3030 мин — пока это не исправлено, уведомления о билетах не придут.",
+   "delivery": {
+    "push": {
+     "failed": 1,
+     "ok": 0
+    },
+    "telegram": null
+   },
+   "kind": "source_error",
+   "t": 1795295459,
+   "title": "⚠️ Не могу проверить рейсы 27.12",
+   "urgent": false,
+   "watch": "flight:2026-12-27"
+  },
+  {
    "body": "РЖД: Нет связи с источником (ConnectionError). Не получается уже 2989 мин — пока это не исправлено, уведомления о билетах не придут.",
    "delivery": {
     "push": {
@@ -895,7 +940,7 @@
      "travelpayouts": {
       "kind": "network",
       "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": 1795207266,
+      "notified_at": 1795295459,
       "since": 1795113647
      }
     },
@@ -922,7 +967,7 @@
      }
     }
    },
-   "tried_at": 1795293662
+   "tried_at": 1795295459
   },
   "flight:2027-01-09": {
    "good": {
@@ -948,14 +993,14 @@
      "travelpayouts": {
       "kind": "network",
       "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": 1795207266,
+      "notified_at": 1795295459,
       "since": 1795113647
      }
     },
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795293662
+   "tried_at": 1795295459
   },
   "flight:2027-01-10": {
    "good": {
@@ -981,14 +1026,14 @@
      "travelpayouts": {
       "kind": "network",
       "message": "Нет связи с источником (ConnectionError)",
-      "notified_at": 1795207266,
+      "notified_at": 1795295459,
       "since": 1795113647
      }
     },
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795293662
+   "tried_at": 1795295459
   },
   "train:2027-01-09": {
    "good": {
