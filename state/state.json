@@ -871,7 +871,7 @@
   "travelpayouts": {
    "excerpt": "{\"data\":[{\"flight_number\":\"301\",\"link\":\"/search/UUA2712MOW1?t=RT17984004001798406700000105UUAVKO_03a0240e91bfbbb777fe8cad78b1ec53_9690\\u0026search_date=19112026\\u0026expected_price_uuid=01a1f346-f25e-8031-6086-347893da9afb\\u0026static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1\\u0026itinerary_key=XaJCgI_tsXir7eUMbgAvHw\\u0026expected_price_source=share\\u0026expected_price_currency=rub\\u0026expected_price=9693\",\"origin_airport\":\"UUA\",\"destination_airport\":\"VKO\",\"departure_at\":\"2026-12-27T19:40:00+03:00\",\"airline\":\"RT\",\"destination\":\"MOW\",\"origin\":\"UUA\",\"price\":9693,\"gate\":\"Авиасейлс\",\"return_transfers\":0,\"duration\":105,\"duration_to\":105,\"duration_back\":0,\"transfers\":0}],\"currency\":\"rub\",\"success\":true}",
    "last_error": {
-    "at": 1795353054,
+    "at": 1795356650,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (ConnectionError)"
@@ -937,7 +937,7 @@
     }
    },
    "last": {
-    "at": 1795353054,
+    "at": 1795356650,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -982,7 +982,7 @@
      }
     }
    },
-   "tried_at": 1795354850
+   "tried_at": 1795356650
   },
   "flight:2027-01-09": {
    "good": {
@@ -995,7 +995,7 @@
     }
    },
    "last": {
-    "at": 1795353054,
+    "at": 1795356650,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -1015,7 +1015,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795354850
+   "tried_at": 1795356650
   },
   "flight:2027-01-10": {
    "good": {
@@ -1028,7 +1028,7 @@
     }
    },
    "last": {
-    "at": 1795353054,
+    "at": 1795356650,
     "error": "Нет связи с источником (ConnectionError)",
     "kind": "network",
     "ok": false
@@ -1048,7 +1048,7 @@
     "known": [],
     "offers_seen": {}
    },
-   "tried_at": 1795354850
+   "tried_at": 1795356650
   },
   "train:2027-01-09": {
    "good": {
