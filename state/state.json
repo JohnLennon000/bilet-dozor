@@ -2,6 +2,21 @@
  "digest_day": "2026-11-24",
  "events": [
   {
+   "body": "Самый дешёвый: 9 635 ₽ → 9 794 ₽ (+159 ₽, +1,7%). ЮВТ Аэро RT301, вылет 20:10 — 9 794 ₽. За время наблюдения: мин 8 218 ₽, макс 9 794 ₽.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "price_changed",
+   "t": 1795529446,
+   "title": "📈 Бугульма → Москва · 09.01: цена выросла",
+   "urgent": false,
+   "watch": "flight:2027-01-09"
+  },
+  {
    "body": "Самый дешёвый: 8 220 ₽ → 9 635 ₽ (+1 415 ₽, +17%). ЮВТ Аэро RT301, вылет 20:10 — 9 635 ₽. За время наблюдения: мин 8 218 ₽, макс 9 635 ₽.",
    "delivery": {
     "push": {
@@ -1072,8 +1087,8 @@
     "message": "Нет связи с источником (ConnectionError)"
    },
    "last_ok": {
-    "at": 1795525857,
-    "ms": 252,
+    "at": 1795529446,
+    "ms": 125,
     "status": 200
    }
   }
@@ -1107,7 +1122,7 @@
  "watches": {
   "flight:2026-12-27": {
    "good": {
-    "at": 1795525857,
+    "at": 1795529446,
     "snapshot": {
      "at": 1795461043,
      "date": "2026-12-27",
@@ -1132,7 +1147,7 @@
     }
    },
    "last": {
-    "at": 1795525857,
+    "at": 1795529446,
     "ok": true
    },
    "meta": {
@@ -1150,7 +1165,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1795527641,
+      "at": 1795529446,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1168,13 +1183,13 @@
      }
     }
    },
-   "tried_at": 1795527641
+   "tried_at": 1795529446
   },
   "flight:2027-01-09": {
    "good": {
-    "at": 1795525857,
+    "at": 1795529446,
     "snapshot": {
-     "at": 1795525857,
+     "at": 1795529446,
      "date": "2027-01-09",
      "offers": [
       {
@@ -1185,9 +1200,9 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-09T20:10:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_9638&search_date=24112026&expected_price_uuid=01a20dab-883c-8030-61da-d9b6c9756fe8&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=9635",
+       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_9794&search_date=24112026&expected_price_uuid=01a20dd6-84f7-8030-2236-b4d0a2cdf1bd&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=9794",
        "origin_airport": "UUA",
-       "price": 9635,
+       "price": 9794,
        "source": "travelpayouts",
        "stale": false,
        "transfers": 0
@@ -1197,15 +1212,15 @@
     }
    },
    "last": {
-    "at": 1795525857,
+    "at": 1795529446,
     "ok": true
    },
    "meta": {
     "available_since": 1795522241,
     "baselines": {
      "cheapest": {
-      "at": 1795525857,
-      "price": 9635
+      "at": 1795529446,
+      "price": 9794
      }
     },
     "first_available_at": 1795522241,
@@ -1215,7 +1230,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-09T20:10:00+03:00": {
-      "at": 1795527641,
+      "at": 1795529446,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1224,22 +1239,22 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-09T20:10:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_9638&search_date=24112026&expected_price_uuid=01a20dab-883c-8030-61da-d9b6c9756fe8&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=9635",
+       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_9794&search_date=24112026&expected_price_uuid=01a20dd6-84f7-8030-2236-b4d0a2cdf1bd&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=9794",
        "origin_airport": "UUA",
-       "price": 9635,
+       "price": 9794,
        "source": "travelpayouts",
        "transfers": 0
       }
      }
     }
    },
-   "tried_at": 1795527641
+   "tried_at": 1795529446
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1795527641,
+    "at": 1795529446,
     "snapshot": {
-     "at": 1795527641,
+     "at": 1795529446,
      "date": "2027-01-10",
      "offers": [
       {
@@ -1250,9 +1265,9 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-10T19:40:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_8221&search_date=24112026&expected_price_uuid=01a20dc2-bed2-8030-e5f5-890b023c5795&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=8219",
+       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_8221&search_date=24112026&expected_price_uuid=01a20dd6-0ed3-8030-e2a6-624fc9f0d739&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=8221",
        "origin_airport": "UUA",
-       "price": 8219,
+       "price": 8221,
        "source": "travelpayouts",
        "stale": false,
        "transfers": 0
@@ -1262,7 +1277,7 @@
     }
    },
    "last": {
-    "at": 1795525857,
+    "at": 1795529446,
     "ok": true
    },
    "meta": {
@@ -1280,7 +1295,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-10T19:40:00+03:00": {
-      "at": 1795527641,
+      "at": 1795529446,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1289,16 +1304,16 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-10T19:40:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_8221&search_date=24112026&expected_price_uuid=01a20dc2-bed2-8030-e5f5-890b023c5795&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=8219",
+       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_8221&search_date=24112026&expected_price_uuid=01a20dd6-0ed3-8030-e2a6-624fc9f0d739&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=8221",
        "origin_airport": "UUA",
-       "price": 8219,
+       "price": 8221,
        "source": "travelpayouts",
        "transfers": 0
       }
      }
     }
    },
-   "tried_at": 1795527641
+   "tried_at": 1795529446
   },
   "train:2027-01-09": {
    "good": {
