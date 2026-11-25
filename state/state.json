@@ -2,6 +2,21 @@
  "digest_day": "2026-11-25",
  "events": [
   {
+   "body": "Самый дешёвый: 11 197 ₽ → 12 836 ₽ (+1 639 ₽, +15%). ЮВТ Аэро RT301, вылет 20:10 — 12 836 ₽. За время наблюдения: мин 8 218 ₽, макс 12 836 ₽.",
+   "delivery": {
+    "push": {
+     "failed": 0,
+     "ok": 1
+    },
+    "telegram": null
+   },
+   "kind": "price_changed",
+   "t": 1795603241,
+   "title": "📈 Бугульма → Москва · 09.01: цена выросла",
+   "urgent": false,
+   "watch": "flight:2027-01-09"
+  },
+  {
    "body": "🚆 09.01: билетов нет, проверено 19.11 21:20 (сейчас ошибка источника: Нет связи с источником (таймаут))\n✈️ 27.12: есть 1 вариант(ов), от 9 681 ₽\n✈️ 09.01: есть 1 вариант(ов), от 11 300 ₽, с 24.11 15:10 +3 080 ₽\n✈️ 10.01: есть 1 вариант(ов), от 11 376 ₽, с 24.11 15:10 +3 173 ₽",
    "delivery": {
     "push": {
@@ -1157,7 +1172,7 @@
   "rzd": {
    "excerpt": "{\n  \"OriginStationCode\" : \"2024750\",\n  \"DestinationStationCode\" : \"2000000\",\n  \"Trains\" : [ {\n    \"CarGroups\" : [ ],\n    \"IsFromSchedule\" : true,\n    \"IsTourPackagePossible\" : false,\n    \"CarTransportationsFreePlacesCount\" : null,\n    \"ActualMovement\" : null,\n    \"CategoryId\" : null,\n    \"ScheduleId\" : null,\n    \"BaggageCarsThreads\" : null,\n    \"CarTransportationCoachesThreads\" : null,\n    \"Provider\" : \"P1\",\n    \"IsWaitListAvailable\" : true,\n    \"BaggageTotalPlaceQuantity\" : 0,\n    \"HasElectronicRegistration\" : true,\n    \"HasCarTransportationCoaches\" : false,\n    \"HasDynamicPricingCars\" : false,\n    \"HasTwoStoreyCars\" : false,\n    \"HasSpecialSaleMode\" : false,\n    \"Carriers\" : [ \"ФПК\" ],\n    \"CarrierDisplayNames\" : [ \"ФПК\" ],\n    \"Id\" : 1,\n    \"IsBranded\" : false,\n    \"CarNumeration\" : \"Unknown\",\n    \"TrainNumber\" : \"301У\",\n    \"TrainNumberToGetRoute\" : \"301У\",\n    \"DisplayTrainNumber\" : \"301У\",\n    \"TrainDescription\" : null,\n    \"TrainName\" : \"\",\n    \"TrainNameEn\" : null,\n    \"TransportType\" : \"Train\",\n    \"OriginName\" : null,\n    \"InitialStationName\" : \"Челябинск-Главный\",\n    \"OriginStationCode\" : \"2024750\",\n    \"OriginStationInfo\" : {\n      \"StationName\" : \"Туймазы\",\n      \"Sta",
    "last_error": {
-    "at": 1795600862,
+    "at": 1795603241,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (таймаут)"
@@ -1255,7 +1270,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1795601446,
+      "at": 1795603241,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1273,13 +1288,13 @@
      }
     }
    },
-   "tried_at": 1795601446
+   "tried_at": 1795603241
   },
   "flight:2027-01-09": {
    "good": {
-    "at": 1795601446,
+    "at": 1795603241,
     "snapshot": {
-     "at": 1795601446,
+     "at": 1795603241,
      "date": "2027-01-09",
      "offers": [
       {
@@ -1290,9 +1305,9 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-09T20:10:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_11310&search_date=25112026&expected_price_uuid=01a21224-6171-8030-2029-9fb9de3aaa3d&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=11294",
+       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_12855&search_date=25112026&expected_price_uuid=01a21245-5026-8031-6d95-e0aa98f229c6&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=12836",
        "origin_airport": "UUA",
-       "price": 11294,
+       "price": 12836,
        "source": "travelpayouts",
        "stale": false,
        "transfers": 0
@@ -1309,8 +1324,8 @@
     "available_since": 1795522241,
     "baselines": {
      "cheapest": {
-      "at": 1795551040,
-      "price": 11197
+      "at": 1795603241,
+      "price": 12836
      }
     },
     "first_available_at": 1795522241,
@@ -1320,7 +1335,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-09T20:10:00+03:00": {
-      "at": 1795601446,
+      "at": 1795603241,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1329,16 +1344,16 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-09T20:10:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_11310&search_date=25112026&expected_price_uuid=01a21224-6171-8030-2029-9fb9de3aaa3d&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=11294",
+       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_12855&search_date=25112026&expected_price_uuid=01a21245-5026-8031-6d95-e0aa98f229c6&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=12836",
        "origin_airport": "UUA",
-       "price": 11294,
+       "price": 12836,
        "source": "travelpayouts",
        "transfers": 0
       }
      }
     }
    },
-   "tried_at": 1795601446
+   "tried_at": 1795603241
   },
   "flight:2027-01-10": {
    "good": {
@@ -1385,7 +1400,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-10T19:40:00+03:00": {
-      "at": 1795601446,
+      "at": 1795603241,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1403,7 +1418,7 @@
      }
     }
    },
-   "tried_at": 1795601446
+   "tried_at": 1795603241
   },
   "train:2027-01-09": {
    "good": {
@@ -1450,7 +1465,7 @@
     }
    },
    "last": {
-    "at": 1795600862,
+    "at": 1795603241,
     "error": "Нет связи с источником (таймаут)",
     "kind": "network",
     "ok": false
