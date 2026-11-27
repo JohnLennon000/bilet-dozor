@@ -1337,7 +1337,7 @@
   "rzd": {
    "excerpt": "{\n  \"OriginStationCode\" : \"2024750\",\n  \"DestinationStationCode\" : \"2000000\",\n  \"Trains\" : [ {\n    \"CarGroups\" : [ ],\n    \"IsFromSchedule\" : true,\n    \"IsTourPackagePossible\" : false,\n    \"CarTransportationsFreePlacesCount\" : null,\n    \"ActualMovement\" : null,\n    \"CategoryId\" : null,\n    \"ScheduleId\" : null,\n    \"BaggageCarsThreads\" : null,\n    \"CarTransportationCoachesThreads\" : null,\n    \"Provider\" : \"P1\",\n    \"IsWaitListAvailable\" : true,\n    \"BaggageTotalPlaceQuantity\" : 0,\n    \"HasElectronicRegistration\" : true,\n    \"HasCarTransportationCoaches\" : false,\n    \"HasDynamicPricingCars\" : false,\n    \"HasTwoStoreyCars\" : false,\n    \"HasSpecialSaleMode\" : false,\n    \"Carriers\" : [ \"ФПК\" ],\n    \"CarrierDisplayNames\" : [ \"ФПК\" ],\n    \"Id\" : 1,\n    \"IsBranded\" : false,\n    \"CarNumeration\" : \"Unknown\",\n    \"TrainNumber\" : \"301У\",\n    \"TrainNumberToGetRoute\" : \"301У\",\n    \"DisplayTrainNumber\" : \"301У\",\n    \"TrainDescription\" : null,\n    \"TrainName\" : \"\",\n    \"TrainNameEn\" : null,\n    \"TransportType\" : \"Train\",\n    \"OriginName\" : null,\n    \"InitialStationName\" : \"Челябинск-Главный\",\n    \"OriginStationCode\" : \"2024750\",\n    \"OriginStationInfo\" : {\n      \"StationName\" : \"Туймазы\",\n      \"Sta",
    "last_error": {
-    "at": 1795792841,
+    "at": 1795795269,
     "excerpt": "",
     "kind": "network",
     "message": "Нет связи с источником (таймаут)"
@@ -1357,8 +1357,8 @@
     "message": "Ошибка на стороне источника (HTTP 502)"
    },
    "last_ok": {
-    "at": 1795791668,
-    "ms": 138,
+    "at": 1795795269,
+    "ms": 107,
     "status": 200
    }
   }
@@ -1392,7 +1392,7 @@
  "watches": {
   "flight:2026-12-27": {
    "good": {
-    "at": 1795791668,
+    "at": 1795795269,
     "snapshot": {
      "at": 1795728657,
      "date": "2026-12-27",
@@ -1417,7 +1417,7 @@
     }
    },
    "last": {
-    "at": 1795791668,
+    "at": 1795795269,
     "ok": true
    },
    "meta": {
@@ -1435,7 +1435,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1795793458,
+      "at": 1795795269,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1453,13 +1453,13 @@
      }
     }
    },
-   "tried_at": 1795793458
+   "tried_at": 1795795269
   },
   "flight:2027-01-09": {
    "good": {
-    "at": 1795793458,
+    "at": 1795795269,
     "snapshot": {
-     "at": 1795793458,
+     "at": 1795795269,
      "date": "2027-01-09",
      "offers": [
       {
@@ -1470,9 +1470,9 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-09T20:10:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_18739&search_date=27112026&expected_price_uuid=01a21d2a-0517-8031-697d-5d7f120ee6b9&static_fare_key=TY%7CP1%7CH1%7CL1_1_30%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=18741",
+       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_18739&search_date=27112026&expected_price_uuid=01a21da2-2eb4-8030-66b2-2af8ba929a07&static_fare_key=TY%7CP1%7CH1%7CL1_1_30%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=18728",
        "origin_airport": "UUA",
-       "price": 18741,
+       "price": 18728,
        "source": "travelpayouts",
        "stale": false,
        "transfers": 0
@@ -1482,7 +1482,7 @@
     }
    },
    "last": {
-    "at": 1795791668,
+    "at": 1795795269,
     "ok": true
    },
    "meta": {
@@ -1500,7 +1500,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-09T20:10:00+03:00": {
-      "at": 1795793458,
+      "at": 1795795269,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1509,22 +1509,22 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-09T20:10:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_18739&search_date=27112026&expected_price_uuid=01a21d2a-0517-8031-697d-5d7f120ee6b9&static_fare_key=TY%7CP1%7CH1%7CL1_1_30%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=18741",
+       "link": "https://www.aviasales.ru/search/UUA0901MOW1?t=RT17995254001799531700000105UUAVKO_69bb3ce77c6a01e69c8d8b59400efc0b_18739&search_date=27112026&expected_price_uuid=01a21da2-2eb4-8030-66b2-2af8ba929a07&static_fare_key=TY%7CP1%7CH1%7CL1_1_30%7CCH1%7CR1%7CTBC1&itinerary_key=zJnTA_jbp04nGXHE0YZEWQ&expected_price_source=share&expected_price_currency=rub&expected_price=18728",
        "origin_airport": "UUA",
-       "price": 18741,
+       "price": 18728,
        "source": "travelpayouts",
        "transfers": 0
       }
      }
     }
    },
-   "tried_at": 1795793458
+   "tried_at": 1795795269
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1795793458,
+    "at": 1795795269,
     "snapshot": {
-     "at": 1795793458,
+     "at": 1795795269,
      "date": "2027-01-10",
      "offers": [
       {
@@ -1535,9 +1535,9 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-10T19:40:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14931&search_date=27112026&expected_price_uuid=01a21c92-93a9-8031-6e1e-c1d78706708b&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14914",
+       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14931&search_date=27112026&expected_price_uuid=01a21c92-93a9-8031-6e1e-c1d78706708b&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14923",
        "origin_airport": "UUA",
-       "price": 14914,
+       "price": 14923,
        "source": "travelpayouts",
        "stale": false,
        "transfers": 0
@@ -1547,7 +1547,7 @@
     }
    },
    "last": {
-    "at": 1795791668,
+    "at": 1795795269,
     "ok": true
    },
    "meta": {
@@ -1565,7 +1565,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-10T19:40:00+03:00": {
-      "at": 1795793458,
+      "at": 1795795269,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1574,16 +1574,16 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-10T19:40:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14931&search_date=27112026&expected_price_uuid=01a21c92-93a9-8031-6e1e-c1d78706708b&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14914",
+       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14931&search_date=27112026&expected_price_uuid=01a21c92-93a9-8031-6e1e-c1d78706708b&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14923",
        "origin_airport": "UUA",
-       "price": 14914,
+       "price": 14923,
        "source": "travelpayouts",
        "transfers": 0
       }
      }
     }
    },
-   "tried_at": 1795793458
+   "tried_at": 1795795269
   },
   "train:2027-01-09": {
    "good": {
@@ -1630,7 +1630,7 @@
     }
    },
    "last": {
-    "at": 1795792841,
+    "at": 1795795269,
     "error": "Нет связи с источником (таймаут)",
     "kind": "network",
     "ok": false
