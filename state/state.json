@@ -1402,8 +1402,8 @@
     "message": "Ошибка на стороне источника (HTTP 502)"
    },
    "last_ok": {
-    "at": 1795867265,
-    "ms": 182,
+    "at": 1795870865,
+    "ms": 122,
     "status": 200
    }
   }
@@ -1437,7 +1437,7 @@
  "watches": {
   "flight:2026-12-27": {
    "good": {
-    "at": 1795867265,
+    "at": 1795870865,
     "snapshot": {
      "at": 1795809669,
      "date": "2026-12-27",
@@ -1462,7 +1462,7 @@
     }
    },
    "last": {
-    "at": 1795867265,
+    "at": 1795870865,
     "ok": true
    },
    "meta": {
@@ -1480,7 +1480,7 @@
     ],
     "offers_seen": {
      "RT301@2026-12-27T19:40:00+03:00": {
-      "at": 1795869057,
+      "at": 1795870865,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1498,11 +1498,11 @@
      }
     }
    },
-   "tried_at": 1795869057
+   "tried_at": 1795870865
   },
   "flight:2027-01-09": {
    "good": {
-    "at": 1795867265,
+    "at": 1795870865,
     "snapshot": {
      "at": 1795863668,
      "date": "2027-01-09",
@@ -1527,7 +1527,7 @@
     }
    },
    "last": {
-    "at": 1795867265,
+    "at": 1795870865,
     "ok": true
    },
    "meta": {
@@ -1545,7 +1545,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-09T20:10:00+03:00": {
-      "at": 1795869057,
+      "at": 1795870865,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1563,13 +1563,13 @@
      }
     }
    },
-   "tried_at": 1795869057
+   "tried_at": 1795870865
   },
   "flight:2027-01-10": {
    "good": {
-    "at": 1795867265,
+    "at": 1795870865,
     "snapshot": {
-     "at": 1795863668,
+     "at": 1795870865,
      "date": "2027-01-10",
      "offers": [
       {
@@ -1580,9 +1580,9 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-10T19:40:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14860&search_date=28112026&expected_price_uuid=01a221b9-23c1-8030-2f98-e36a9486a694&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14860",
+       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14860&search_date=28112026&expected_price_uuid=01a2223c-4b50-8031-2719-595d5f2f9cb3&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14940",
        "origin_airport": "UUA",
-       "price": 14860,
+       "price": 14940,
        "source": "travelpayouts",
        "stale": false,
        "transfers": 0
@@ -1592,7 +1592,7 @@
     }
    },
    "last": {
-    "at": 1795867265,
+    "at": 1795870865,
     "ok": true
    },
    "meta": {
@@ -1610,7 +1610,7 @@
     ],
     "offers_seen": {
      "RT301@2027-01-10T19:40:00+03:00": {
-      "at": 1795869057,
+      "at": 1795870865,
       "offer": {
        "airline": "RT",
        "airline_name": "ЮВТ Аэро",
@@ -1619,16 +1619,16 @@
        "duration_min": 105,
        "flight_number": "RT301",
        "key": "RT301@2027-01-10T19:40:00+03:00",
-       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14860&search_date=28112026&expected_price_uuid=01a221b9-23c1-8030-2f98-e36a9486a694&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14860",
+       "link": "https://www.aviasales.ru/search/UUA1001MOW1?t=RT17996100001799616300000105UUAVKO_8a536d4e39d79e25e76875df0144b632_14860&search_date=28112026&expected_price_uuid=01a2223c-4b50-8031-2719-595d5f2f9cb3&static_fare_key=TY%7CP1%7CH1%7CL1_1_20%7CCH1%7CR1%7CTBC1&itinerary_key=XaJCgI_tsXir7eUMbgAvHw&expected_price_source=share&expected_price_currency=rub&expected_price=14940",
        "origin_airport": "UUA",
-       "price": 14860,
+       "price": 14940,
        "source": "travelpayouts",
        "transfers": 0
       }
      }
     }
    },
-   "tried_at": 1795869057
+   "tried_at": 1795870865
   },
   "train:2027-01-09": {
    "good": {
